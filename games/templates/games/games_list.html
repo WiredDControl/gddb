@@ -1,0 +1,19 @@
+{% extends 'games/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Games List</h1>
+    <table>
+        <tr>
+          <td>Name</td>
+          <td><img src="{% static 'images/exodosicon.png' %}" style="height: 25px;" alt="Zum GLP Eintrag" /></td>
+        </tr>
+        {% for game in games %}
+          <tr>
+            <td style="width: 500px;"><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></td>
+            <td style="padding-left: 6px;">{% if game.glps.all %}<a href="{% url 'glp_detail' pk=game.glps.all.0.id %}"><img id="included" src="{% static '/icons/check-circle-fill.svg' %}" alt="included" /></a>{% else %}<img id="notincluded" src="{% static '/icons/x-circle-fill.svg' %}"  alt="not included" />{% endif %}</td>
+          </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'glp/base.html' %}
+
+{% block content %}
+    <h1>GLP Games List</h1>
+    {% for glp in glps %}
+        <article class="game">
+            <h2><a href="{% url 'glp_detail' pk=glp.pk %}">{{ glp.glptitle }}</a></h2>
+            <time class="date">
+                created: {{ glp.created_date }}
+            </time>            
+            &nbsp;-&nbsp;
+            <time class="date">
+                changed: {{ glp.published_date }}
+            </time>
+            <p>{{ glp.glpdescription|linebreaksbr }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}

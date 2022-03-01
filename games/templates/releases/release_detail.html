@@ -1,0 +1,22 @@
+{% extends 'releases/base.html' %}
+
+{% block content %}
+    <article class="game">
+        {% if release.published_date %}
+            <time class="date">
+                {{ release.published_date }}
+            </time>
+        {% endif %}
+        <h2>{{ release.title }} ({{ release.year }} - {{ release.get_media_display }})</h2>
+        <h5>Developer: {{ release.developer }}</h5>
+        <h5>Publisher: {{ release.publisher }}</h5>
+        <p></p>
+        <h5>Sprachausgabe: {{ release.speech }}</h5>
+        <h5>Texte: {{ release.text }}</h5>
+        <p></p>
+        <p>{{ release.content|linebreaksbr }}</p>
+        {% for img in images %}
+            <img src="{{ img.imgfilename.url }}"><br>
+        {% endfor %}
+    </article>
+{% endblock %}

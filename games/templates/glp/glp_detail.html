@@ -1,0 +1,20 @@
+{% extends 'glp/base.html' %}
+
+{% block content %}
+    <article class="game">
+        <aside class="actions">
+            {% if user.is_authenticated %}
+                <a class="btn btn-default" href="{% url 'glp_edit' pk=glp.pk %}">
+                {% include './icons/pencil-fill.svg' %}
+                </a>
+            {% endif %}
+        </aside>        
+        {% if glp.published_date %}
+            <time class="date">
+                {{ glp.published_date }}
+            </time>
+        {% endif %}
+        <h2>{{ glp.glptitle }}</h2>
+        <p>{{ glp.glpdescription|linebreaksbr }}</p>
+    </article>
+{% endblock %}
