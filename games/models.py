@@ -155,8 +155,10 @@ ImagePathfilename = PathAndRename("images")
 ImagePathfilenameRaw = PathAndRename("images_raw")
 
 class Image(models.Model):
-    #imgfilename = models.ImageField(upload_to='images')
-    imgfilename = models.ImageField("Bilddatei",upload_to=ImagePathfilename)
+    imgfilename = models.CharField("Bilddatei",max_length=250)
+    #imgfilename = 'https://timberserver.de/gddb/media/images/'+imgfilename
+    #deprecated:    
+    #   imgfilename = models.ImageField("Bilddatei",upload_to=ImagePathfilename)
     rlstitle = models.ForeignKey(Release, related_name="releasetitle", on_delete=models.CASCADE,verbose_name="Release")
     cover = 'cvr'
     back = 'bck'
@@ -174,10 +176,11 @@ class Image(models.Model):
         choices=imgtype_CHOICES,
         default=cover,
     )
-    imgdescr = models.CharField("Beschreibung",max_length=250)
-    imgcomment = models.TextField("Kommentar")
-    imgrawfilename = models.ImageField("Roh-Bilddatei",upload_to=ImagePathfilenameRaw)
-    imgrawlink = models.CharField("Link zu Rohscans",max_length=300)
+    imgdescr = models.CharField("Beschreibung",max_length=250,blank=True)
+    imgcomment = models.TextField("Kommentar",blank=True)
+    #imgrawfilename = models.ImageField("Roh-Bilddatei",upload_to=ImagePathfilenameRaw)
+    imgrawlink = models.CharField("Link zu Rohscans",max_length=300,blank=True)
+    source = models.CharField("Von wem ist das Bild",max_length=300,default="Timber")
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 

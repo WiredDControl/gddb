@@ -15,8 +15,12 @@
         <h5>Texte: {{ release.text }}</h5>
         <p></p>
         <p>{{ release.content|linebreaksbr }}</p>
+        <table class="images">
         {% for img in images %}
-            <img src="{{ img.imgfilename.url }}"><br>
+            <tr>
+                <td style="vertical-align: top">{{ img.get_imgtype_display }}</td>
+                <td><img src="https://timberserver.de/gddb/media/images/{{ img.imgfilename }}" style="width:350px;"><br></td>
+            </tr>                        
         {% endfor %}
     </article>
 {% endblock %}
