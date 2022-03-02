@@ -12,6 +12,12 @@
         {% if glpid is not None %}
             <h5><a href="{% url 'glp_detail' pk=glpid.pk %}">Zum GLP-Eintrag</a></h5>
         {% endif %}
+        {% if game.mobygameslink is not None %}
+            <h5><a href="{{ game.mobygameslink }}">Game on Mobygames</a></h5>
+        {% endif %}
+        {% if game.ogdblink is not None %}
+            <h5><a href="{{ game.ogdblink }}">Game on OGDB</a></h5>
+        {% endif %}
         <p>{{ game.description|linebreaksbr }}</p>
     </article>
     <h1>Releases:</h1>
