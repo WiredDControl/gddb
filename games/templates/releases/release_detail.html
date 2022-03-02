@@ -8,6 +8,9 @@
             </time>
         {% endif %}
         <h1>{{ release.title }} ({{ release.year }} - {{ release.get_media_display }})</h1>
+        {% if release.ogdblink is not None %}
+            <h5><a href="{{ release.ogdblink }}">Release on OGDB</a></h5>
+        {% endif %}        
         <h5>Developer: {{ release.developer }}</h5>
         <h5>Publisher: {{ release.publisher }}</h5>
         <br />

@@ -129,6 +129,7 @@ class Release(models.Model):
 
     barcode = models.CharField(max_length=250)
     usk = models.CharField(max_length=100)
+    ogdblink = models.CharField(max_length=300,blank=True,default="")
     content = models.TextField()
 
     created_date = models.DateTimeField(default=timezone.now)
