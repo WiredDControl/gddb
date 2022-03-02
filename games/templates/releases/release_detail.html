@@ -27,18 +27,34 @@
         </table>
         <br />
         <br />
-        <h4>Scans:</h4>
+        <h4>Extras:</h4>
+        <table class="extras">
+            {% for extra in extras %}
+            <tr>
+                <td>{{ extra.get_extratype_display }}<br />
+                    {{ extra.extradescr }}<br />
+                    <a href="https://timberserver.de/gddb/media/extra/{{ extra.extrafilename }}">Download File</a> (<a href="https://timberserver.de/gddb/media/extra_raw/{{ extra.extrarawfilename }}">Download Raw-Scan</a>)
+                </td>
+                <tr>
+                    <td colspan="3"></td>
+                </tr>
+            </tr>                       
+            {% endfor %}
+        </table>
+        <br />
+        <br />        
+        <h4>Boxscans:</h4>
         <table class="images">
-        {% for img in images %}
-            <tr>
-                <td style="vertical-align: top">{{ img.get_imgtype_display }}<br />(<a href="https://timberserver.de/gddb/media/images_raw/{{ img.imgrawfilename }}">Download Raw-Scan</a>)</td>
-                <td style="width: 50px;"></td>
-                <td><img src="https://timberserver.de/gddb/media/images/{{ img.imgfilename }}" style="width:350px;"><br></td>
-            </tr>                        
-            <tr>
-                <td colspan="3"></td>
-            </tr>
-        {% endfor %}
+            {% for img in images %}
+                <tr>
+                    <td style="vertical-align: top">{{ img.get_imgtype_display }}<br />(<a href="https://timberserver.de/gddb/media/images_raw/{{ img.imgrawfilename }}">Download Raw-Scan</a>)</td>
+                    <td style="width: 50px;"></td>
+                    <td><img src="https://timberserver.de/gddb/media/images/{{ img.imgfilename }}" style="width:350px;"><br></td>
+                </tr>                        
+                <tr>
+                    <td colspan="3"></td>
+                </tr>
+            {% endfor %}
         </table>
     </article>
 {% endblock %}

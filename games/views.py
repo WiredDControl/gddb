@@ -1,7 +1,7 @@
 from unicodedata import numeric
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Game,GLP,Release,Image,Disk
+from .models import Game,GLP,Release,Image,Disk,Extra
 from .forms import GLPForm,ImageForm
 
 def games_list(request):
@@ -39,8 +39,13 @@ def release_detail(request, pk):
         disks = Disk.objects.filter(rlstitle_id=pk)
     except:
         print("no disks found")
-        disks = None   
-    return render(request, 'releases/release_detail.html', {'release': release, 'images': images, 'disks': disks})
+        disks = None
+    try:
+        extras = Extra.objects.filter(rlstitle_id=pk)
+    except:
+        print("no disks found")
+        extras = None
+    return render(request, 'releases/release_detail.html', {'release': release, 'images': images, 'disks': disks, 'extras': extras})
 
 def glp_new(request):
     if request.method == "POST":

@@ -227,3 +227,44 @@ class Disk(models.Model):
 
     def __str__(self):
         return self.get_disktype_display()
+
+class Extra(models.Model):
+    extrafilename = models.CharField("Dateiname",max_length=250)
+    #imgfilename = 'https://timberserver.de/gddb/media/extras/'+extrafilename
+    rlstitle = models.ForeignKey(Release, related_name="releasetitle3", on_delete=models.CASCADE,verbose_name="Release")
+    manual = 'MAN'
+    refcard = 'REF'
+    map = 'MAP'
+    regcard = 'REG'
+    hintbook = 'HBK'
+    other = 'OTH'
+    extratype_CHOICES = [
+        (manual, 'Handbuch'),
+        (refcard, 'Referenzkarte'),
+        (map, 'Karte/Poster'),
+        (regcard, 'Registrationskarte'),
+        (hintbook, 'Lösungsbuch'),
+        (other, 'Download'),
+    ]
+    extratype = models.CharField(
+        "Extra-Typ:",
+        max_length=3,
+        choices=extratype_CHOICES,
+        default=manual,
+    )
+    extrarawfilename = models.CharField("Roh-Scandateien",max_length=250,blank=True,default="")
+    extralanguage = models.CharField("Sprache(n)",max_length=250,default="de")
+    extrapages = models.IntegerField("Anzahl Seiten")
+    extraquality = models.IntegerField("Qualität")
+    extradescr = models.CharField("Beschreibung",max_length=250,blank=True)
+    extracomment = models.TextField("Kommentar",blank=True)
+    extrasource = models.CharField("Von wem ist der Scan",max_length=300,default="Timber")
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.get_extratype_display()
