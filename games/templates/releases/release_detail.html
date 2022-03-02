@@ -31,7 +31,7 @@
         <table class="images">
         {% for img in images %}
             <tr>
-                <td style="vertical-align: top">{{ img.get_imgtype_display }}<br />(<a href="https://timberserver.de/gddb/media/images_raw/{{ img.imgfilename }}">Download Raw-Scan</a>)</td>
+                <td style="vertical-align: top">{{ img.get_imgtype_display }}<br />(<a href="https://timberserver.de/gddb/media/images_raw/{{ img.imgrawfilename }}">Download Raw-Scan</a>)</td>
                 <td style="width: 50px;"></td>
                 <td><img src="https://timberserver.de/gddb/media/images/{{ img.imgfilename }}" style="width:350px;"><br></td>
             </tr>                        

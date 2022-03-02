@@ -178,6 +178,7 @@ class Image(models.Model):
     )
     imgdescr = models.CharField("Beschreibung",max_length=250,blank=True)
     imgcomment = models.TextField("Kommentar",blank=True)
+    imgrawfilename = models.CharField("Roh-Bilddatei",max_length=250,blank=True,default="")
     #imgrawfilename = models.ImageField("Roh-Bilddatei",upload_to=ImagePathfilenameRaw)
     imgrawlink = models.CharField("Link zu Rohscans",max_length=300,blank=True)
     source = models.CharField("Von wem ist das Bild",max_length=300,default="Timber")
