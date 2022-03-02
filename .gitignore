@@ -12,7 +12,7 @@ gddb/
 db.sqlite3
 
 # Static Ordner im Projektverzeichnis
-static/
+#static/
 
 # Media folder with images
 media/
