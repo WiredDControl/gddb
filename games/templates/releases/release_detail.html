@@ -7,10 +7,12 @@
                 {{ release.published_date }}
             </time>
         {% endif %}
-        <h2>{{ release.title }} ({{ release.year }} - {{ release.get_media_display }})</h2>
+        <h1>{{ release.title }} ({{ release.year }} - {{ release.get_media_display }})</h1>
         <h5>Developer: {{ release.developer }}</h5>
         <h5>Publisher: {{ release.publisher }}</h5>
-        <p></p>
+        <br />
+        <br />
+        <h4>Infos:</h4>
         <h5>Sprachausgabe: {{ release.speech }}</h5>
         <h5>Texte: {{ release.text }}</h5>
         <p></p>
@@ -31,9 +33,8 @@
         <table class="extras">
             {% for extra in extras %}
             <tr>
-                <td>{{ extra.get_extratype_display }}<br />
-                    {{ extra.extradescr }}<br />
-                    <a href="https://timberserver.de/gddb/media/extra/{{ extra.extrafilename }}">Download File</a> (<a href="https://timberserver.de/gddb/media/extra_raw/{{ extra.extrarawfilename }}">Download Raw-Scan</a>)
+                <td>{% if extra.extratypedescr %}{{ extra.extratypedescr }}<br />{% else %}{{ extra.get_extratype_display }}<br />{% endif %}
+                    <a href="https://timberserver.de/gddb/media/extra/{{ extra.extrafilename }}">Download File</a>{% if extra.extrarawfilename %} (<a href="https://timberserver.de/gddb/media/extra_raw/{{ extra.extrarawfilename }}">Download Raw-Scan</a>){% endif %}
                 </td>
                 <tr>
                     <td colspan="3"></td>

@@ -244,7 +244,7 @@ class Extra(models.Model):
         (map, 'Karte/Poster'),
         (regcard, 'Registrationskarte'),
         (hintbook, 'Lösungsbuch'),
-        (other, 'Download'),
+        (other, 'other...'),
     ]
     extratype = models.CharField(
         "Extra-Typ:",
@@ -252,6 +252,7 @@ class Extra(models.Model):
         choices=extratype_CHOICES,
         default=manual,
     )
+    extratypedescr = models.CharField("Typ Beschreibung",max_length=250,blank=True)
     extrarawfilename = models.CharField("Roh-Scandateien",max_length=250,blank=True,default="")
     extralanguage = models.CharField("Sprache(n)",max_length=250,default="de")
     extrapages = models.IntegerField("Anzahl Seiten")
