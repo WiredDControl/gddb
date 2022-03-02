@@ -5,8 +5,8 @@ __pycache__
 
 # Env
 .env
-#gddbenv/
-#gddb/
+gddbenv/
+gddb/
 
 # Datenbank
 db.sqlite3

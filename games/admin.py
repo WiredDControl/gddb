@@ -1,4 +1,4 @@
-from tkinter import Image
+#from tkinter import Image
 from django.contrib import admin
 from .models import Developer, Game,Genre,GLP, Publisher, Release, Image
 
