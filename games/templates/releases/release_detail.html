@@ -34,7 +34,7 @@
             {% for extra in extras %}
             <tr>
                 <td>{% if extra.extratypedescr %}{{ extra.extratypedescr }}<br />{% else %}{{ extra.get_extratype_display }}<br />{% endif %}
-                    <a href="https://timberserver.de/gddb/media/extra/{{ extra.extrafilename }}">Download File</a>{% if extra.extrarawfilename %} (<a href="https://timberserver.de/gddb/media/extra_raw/{{ extra.extrarawfilename }}">Download Raw-Scan</a>){% endif %}
+                    <a href="https://timberserver.de/gddb/media/extras/{{ extra.extrafilename }}">Download File</a>{% if extra.extrarawfilename %} (<a href="https://timberserver.de/gddb/media/extras_raw/{{ extra.extrarawfilename }}">Download Raw-Scan</a>){% endif %}
                 </td>
                 <tr>
                     <td colspan="3"></td>
