@@ -49,6 +49,8 @@ class Game(models.Model):
     title = models.CharField(max_length=250)
     description = models.TextField()
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    mobygameslink = models.CharField(max_length=300,blank=True,default="")
+    ogdblink = models.CharField(max_length=300,blank=True,default="")
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
