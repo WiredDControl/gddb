@@ -11,7 +11,7 @@ def games_list(request):
 def game_detail(request, pk):
     game = get_object_or_404(Game, pk=pk)
     try:
-        glpid = GLP.objects.get(title_id=pk)        ###### NOT WORKING !!!
+        glpid = GLP.objects.get(title_id=pk)        
     except:
         glpid = None
     try:
@@ -31,6 +31,10 @@ def glp_detail(request, pk):
 def release_detail(request, pk):
     release = get_object_or_404(Release, pk=pk)
     try:
+        gameid = Game.objects.get(id=release.title_id)
+    except:
+        gameid = None    
+    try:
         images = Image.objects.filter(rlstitle_id=pk)
     except:
         print("no images found")
@@ -45,7 +49,7 @@ def release_detail(request, pk):
     except:
         print("no disks found")
         extras = None
-    return render(request, 'releases/release_detail.html', {'release': release, 'images': images, 'disks': disks, 'extras': extras})
+    return render(request, 'releases/release_detail.html', {'release': release, 'images': images, 'disks': disks, 'extras': extras, 'gameid': gameid})
 
 def glp_new(request):
     if request.method == "POST":

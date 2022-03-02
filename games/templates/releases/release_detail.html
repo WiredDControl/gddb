@@ -7,7 +7,7 @@
                 {{ release.published_date }}
             </time>
         {% endif %}
-        <h1>{{ release.title }} ({{ release.year }} - {{ release.get_media_display }})</h1>
+        <h1><a href="{% url 'game_detail' pk=gameid.pk %}">{{ release.title }}</a> ({{ release.year }} - {{ release.get_media_display }})</h1>
         {% if release.ogdblink is not None %}
             <h5><a href="{{ release.ogdblink }}">Release on OGDB</a></h5>
         {% endif %}        
