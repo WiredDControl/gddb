@@ -15,12 +15,30 @@
         <h5>Texte: {{ release.text }}</h5>
         <p></p>
         <p>{{ release.content|linebreaksbr }}</p>
+        <br />
+        <br />
+        <h4>Disks/Discs:</h4>
+        <table class="disks">
+            {% for disk in disks %}
+                <tr>
+                    <td style="vertical-align: top">{{ disk.get_disktype_display }}<br /><a href="https://timberserver.de/gddb/media/disks/{{ disk.diskfilename }}">Download Images</a> (<a href="https://timberserver.de/gddb/media/disks_raw/{{ disk.diskfilename }}">Download Kryoflux Images</a>)</td>
+                </tr>                        
+            {% endfor %}
+        </table>
+        <br />
+        <br />
+        <h4>Scans:</h4>
         <table class="images">
         {% for img in images %}
             <tr>
-                <td style="vertical-align: top">{{ img.get_imgtype_display }}</td>
+                <td style="vertical-align: top">{{ img.get_imgtype_display }}<br />(<a href="https://timberserver.de/gddb/media/images_raw/{{ img.imgfilename }}">Download Raw-Scan</a>)</td>
+                <td style="width: 50px;"></td>
                 <td><img src="https://timberserver.de/gddb/media/images/{{ img.imgfilename }}" style="width:350px;"><br></td>
             </tr>                        
+            <tr>
+                <td colspan="3"></td>
+            </tr>
         {% endfor %}
+        </table>
     </article>
 {% endblock %}

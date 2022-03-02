@@ -190,3 +190,39 @@ class Image(models.Model):
 
     def __str__(self):
         return self.get_imgtype_display()
+
+class Disk(models.Model):
+    diskfilename = models.CharField("Image-Datei der Medien",max_length=250)
+    #imgfilename = 'https://timberserver.de/gddb/media/disks/'+diskfilename
+    rlstitle = models.ForeignKey(Release, related_name="releasetitle2", on_delete=models.CASCADE,verbose_name="Release")
+    floppy35 = 'F35'
+    floppy52 = 'F52'
+    cdrom = 'CDR'
+    dvdrom = 'DVD'
+    download = 'DDL'
+    disktype_CHOICES = [
+        (floppy35, 'Floppy 3,5"'),
+        (floppy52, 'Floppy 5,25"'),
+        (cdrom, 'CD-ROM'),
+        (dvdrom, 'DVD-ROM'),
+        (download, 'Download'),
+    ]
+    disktype = models.CharField(
+        "Medientyp:",
+        max_length=3,
+        choices=disktype_CHOICES,
+        default=floppy35,
+    )
+    diskcount = models.IntegerField()
+    diskdescr = models.CharField("Beschreibung",max_length=250,blank=True)
+    diskcomment = models.TextField("Kommentar",blank=True)
+    source = models.CharField("Von wem ist der Rip",max_length=300,default="Timber")
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.get_disktype_display()
