@@ -79,3 +79,9 @@ h4 {
 #notincluded {
     fill: #ff0000;
 }
+
+#iconyes,
+#iconno {
+    vertical-align: top;
+    margin-top: -5px;
+}

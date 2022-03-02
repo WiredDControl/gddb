@@ -1,5 +1,7 @@
 {% extends 'glp/base.html' %}
 
+{% load static %}
+
 {% block content %}
     <article class="game">
         <aside class="actions">
@@ -15,6 +17,35 @@
             </time>
         {% endif %}
         <h2>{{ glp.glptitle }}</h2>
+        <table class="glpinfos">
+            <tr>
+                <td style="width: 300px;"><h5>eXoID:</h5></td><td><h5>{{ glp.eXoID }}</h5></td>
+            </tr>
+            <tr>
+                <td style="width: 300px;"><h5>eXoDOS LaunchBoxID:</h5></td><td><h5>{{ glp.LBID }}</h5></td>
+            </tr>
+            <tr>
+                <td style="width: 300px;"><h5>eXoDOS Batchname:</h5></td><td><h5>{{ glp.batchname }}</h5></td>
+            </tr>
+            <tr>
+                <td style="width: 300px;"><h5>eXoDOS Foldername:</h5></td><td><h5>{{ glp.foldername }}</h5></td>
+            </tr>
+            <tr>
+                <td style="width: 300px;"><h5>DosBox:</h5></td><td><h5>{{ glp.dosbox }}</h5></td>
+            </tr>
+            <tr>
+                <td style="width: 300px;"><h5>ScummVM:</h5></td><td>{% if glp.scummvm == 'x' %}<img id="iconyes" src="{% static '/icons/check-circle-fill.svg' %}" alt="yes" />{% else %}<img id="iconno" src="{% static '/icons/x-circle-fill.svg' %}"  alt="no" />{% endif %}</td>
+            </tr>
+            <tr>
+                <td style="width: 300px;"><h5>Network:</h5></td><td>{% if glp.network == 'x' %}<img id="iconyes" src="{% static '/icons/check-circle-fill.svg' %}" alt="yes" />{% else %}<img id="iconno" src="{% static '/icons/x-circle-fill.svg' %}"  alt="no" />{% endif %}</td>
+            </tr>
+            <tr>
+                <td style="width: 300px;"><h5>Tested:</h5></td><td>{% if glp.tested == 'x' %}<img id="iconyes" src="{% static '/icons/check-circle-fill.svg' %}" alt="yes" />{% else %}<img id="iconno" src="{% static '/icons/x-circle-fill.svg' %}"  alt="no" />{% endif %}</td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <h4>Beschreibung:</h4>
         <p>{{ glp.glpdescription|linebreaksbr }}</p>
     </article>
 {% endblock %}
