@@ -85,3 +85,8 @@ h4 {
     vertical-align: top;
     margin-top: -5px;
 }
+
+.coverimage {
+    float: right;
+    margin-left: 10px;
+}
