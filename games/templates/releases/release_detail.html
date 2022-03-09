@@ -26,7 +26,7 @@
         <p></p>
         <p>{{ release.content|linebreaksbr }}</p>
         <br />
-        {% if release.rawfile is not None %}
+        {% if release.rawfile %}
         <h5>Raw-Files: <a href="https://archive.org/download/{{ release.archivelink }}/{{ release.rawfile }}">Download</a></h5>
         <br />
         {% endif %}
