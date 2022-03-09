@@ -102,7 +102,23 @@ class GLP(models.Model):
 
 class Release(models.Model):
     rlstitle = models.CharField("Release",max_length=250)
+    coverfilename = models.CharField("Cover-Dateiname",max_length=250,blank=True,default="")
     title = models.ForeignKey(Game, on_delete=models.CASCADE)
+    dos = 'DOS'
+    win3x = 'W3X'
+    win9x = 'W9X'
+    winxx = 'WXX'
+    platform_CHOICES = [
+        (dos, 'MS-DOS'),
+        (win3x, 'Windows 3x'),
+        (win9x, 'Windows 9x'),
+        (winxx, 'Windows'),
+    ]
+    platform = models.CharField(
+        max_length=3,
+        choices=platform_CHOICES,
+        default=dos,
+    )
     floppy35 = 'F3'
     floppy52 = 'F5'
     cdrom = 'CD'
@@ -121,15 +137,17 @@ class Release(models.Model):
         default=floppy35,
     )
 
-    year = models.CharField(max_length=10)
+    year = models.CharField("Veröffentlichungsjahr",max_length=10)
     developer = models.ForeignKey(Developer, on_delete=models.CASCADE)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
-    speech = models.CharField(max_length=250)
-    text = models.CharField(max_length=250)
+    speech = models.CharField("Sprachausgabe",max_length=250)
+    text = models.CharField("Textsprachen",max_length=250)
 
-    barcode = models.CharField(max_length=250)
-    usk = models.CharField(max_length=100)
-    ogdblink = models.CharField(max_length=300,blank=True,default="")
+    barcode = models.CharField("Barcode",max_length=250)
+    usk = models.CharField("USK-Freigabe",max_length=100)
+    ogdblink = models.CharField("Link zu OGDB",max_length=300,blank=True,default="")
+    archivelink = models.CharField("Eintrags auf archive.org",max_length=300,blank=True,default="")
+    rawfile = models.CharField("Raw-Files Dateiname",max_length=250,blank=True,default="")
     content = models.TextField()
 
     created_date = models.DateTimeField(default=timezone.now)
@@ -181,9 +199,6 @@ class Image(models.Model):
     )
     imgdescr = models.CharField("Beschreibung",max_length=250,blank=True)
     imgcomment = models.TextField("Kommentar",blank=True)
-    imgrawfilename = models.CharField("Roh-Bilddatei",max_length=250,blank=True,default="")
-    #imgrawfilename = models.ImageField("Roh-Bilddatei",upload_to=ImagePathfilenameRaw)
-    imgrawlink = models.CharField("Link zu Rohscans",max_length=300,blank=True)
     source = models.CharField("Von wem ist das Bild",max_length=300,default="Timber")
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -200,20 +215,24 @@ class Disk(models.Model):
     #imgfilename = 'https://timberserver.de/gddb/media/disks/'+diskfilename
     rlstitle = models.ForeignKey(Release, related_name="releasetitle2", on_delete=models.CASCADE,verbose_name="Release")
     floppy35 = 'F35'
+    floppy35k = 'F35K'
     floppy52 = 'F52'
+    floppy52k = 'F52K'
     cdrom = 'CDR'
     dvdrom = 'DVD'
     download = 'DDL'
     disktype_CHOICES = [
         (floppy35, 'Floppy 3,5"'),
+        (floppy35k, 'Floppy 3,5" (Kryoflux)'),
         (floppy52, 'Floppy 5,25"'),
+        (floppy52k, 'Floppy 5,25" (Kryoflux'),
         (cdrom, 'CD-ROM'),
         (dvdrom, 'DVD-ROM'),
         (download, 'Download'),
     ]
     disktype = models.CharField(
         "Medientyp:",
-        max_length=3,
+        max_length=4,
         choices=disktype_CHOICES,
         default=floppy35,
     )
@@ -256,7 +275,6 @@ class Extra(models.Model):
         default=manual,
     )
     extratypedescr = models.CharField("Typ Beschreibung",max_length=250,blank=True)
-    extrarawfilename = models.CharField("Roh-Scandateien",max_length=250,blank=True,default="")
     extralanguage = models.CharField("Sprache(n)",max_length=250,default="de")
     extrapages = models.IntegerField("Anzahl Seiten")
     extraquality = models.IntegerField("Qualität")
