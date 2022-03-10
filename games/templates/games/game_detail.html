@@ -24,7 +24,7 @@
     <table>
         {% for release in releases %}
           <tr>
-            <td style="width: 300px;"><a href="{% url 'release_detail' pk=release.pk %}">{{ release.rlstitle }} ({{ release.year }} - {{ release.get_media_display }})</a></td>
+            <td><a href="{% url 'release_detail' pk=release.pk %}">{{ release.rlstitle }} ({{ release.year }} - {{ release.get_media_display }})</a></td>
           </tr>
         {% endfor %}
     </table>

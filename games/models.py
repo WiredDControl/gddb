@@ -142,6 +142,7 @@ class Release(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     speech = models.CharField("Sprachausgabe",max_length=250)
     text = models.CharField("Textsprachen",max_length=250)
+    timberown = models.BooleanField("Im Besitz",default=False)
 
     barcode = models.CharField("Barcode",max_length=250)
     usk = models.CharField("USK-Freigabe",max_length=100)
@@ -240,6 +241,7 @@ class Disk(models.Model):
     diskdescr = models.CharField("Beschreibung",max_length=250,blank=True)
     diskcomment = models.TextField("Kommentar",blank=True)
     source = models.CharField("Von wem ist der Rip",max_length=300,default="Timber")
+    timberown = models.BooleanField("Im Besitz",default=False)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
@@ -281,6 +283,7 @@ class Extra(models.Model):
     extradescr = models.CharField("Beschreibung",max_length=250,blank=True)
     extracomment = models.TextField("Kommentar",blank=True)
     extrasource = models.CharField("Von wem ist der Scan",max_length=300,default="Timber")
+    timberown = models.BooleanField("Im Besitz",default=False)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
