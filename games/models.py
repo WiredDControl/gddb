@@ -243,20 +243,7 @@ class Image(models.Model):
         default=good,
     )    
     imgcomment = models.TextField("Kommentar",blank=True)
-    source = models.CharField("Von wem ist das Bild",max_length=300,default="Timber")
-    timberown = models.BooleanField("Im Besitz",default=False)
-    timberquali_CHOICES = [
-        (good, '1 - Gut'),
-        (ok, '2 - Ausreichend'),
-        (bad, '3 - Schlecht'),
-    ]
-    timberquali = models.CharField(
-        "Qualität:",
-        max_length=1,
-        choices=timberquali_CHOICES,
-        default=good,
-    )
-    timbercomment = models.TextField("Kommentar",blank=True)    
+    source = models.CharField("Von wem ist das Bild",max_length=300,default="Timber")  
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
