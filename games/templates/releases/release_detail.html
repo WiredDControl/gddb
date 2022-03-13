@@ -36,7 +36,8 @@
         <table class="disks">
             {% for disk in disks %}
                 <tr>
-                    <td style="vertical-align: top">{{ disk.get_disktype_display }} - <a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download Images</a></td>
+                    <td style="vertical-align: top">{{ disk.get_disktype_display }}{% if disk.diskfilename %} - <a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download Images</a>{% endif %}
+                    {% if disk.diskcomment %}<br />{{ disk.diskcomment }}<br />{% endif %}</td>
                 </tr>                        
             {% endfor %}
         </table>

@@ -297,7 +297,7 @@ class Disk(models.Model):
         default=good,
     )
     diskcomment = models.TextField("Kommentar",blank=True)
-    source = models.CharField("Von wem ist der Rip",max_length=300,default="Timber")
+    source = models.CharField("Von wem ist der Rip",max_length=300,blank=True,default="Timber")
     timberown = models.BooleanField("Im Besitz",default=False)
     timberquali_CHOICES = [
         (good, '1 - Gut'),
@@ -364,7 +364,7 @@ class Extra(models.Model):
         default=good,
     )    
     extracomment = models.TextField("Kommentar",blank=True)
-    extrasource = models.CharField("Von wem ist der Scan",max_length=300,default="Timber")
+    extrasource = models.CharField("Von wem ist der Scan",max_length=300,blank=True,default="Timber")
     timberown = models.BooleanField("Im Besitz",default=False)
     timberquali_CHOICES = [
         (good, '1 - Gut'),
