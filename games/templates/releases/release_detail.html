@@ -21,8 +21,8 @@
         <br />
         <br />
         <h4>Infos:</h4>
-        <h5>Sprachausgabe: {{ release.speech }}</h5>
-        <h5>Texte: {{ release.text }}</h5>
+        <p>Sprachausgabe: {{ release.speech }}
+        <br />Texte: {{ release.text }}</p>
         <p></p>
         <p>{{ release.content|linebreaksbr }}</p>
         <br />
@@ -36,7 +36,7 @@
         <table class="disks">
             {% for disk in disks %}
                 <tr>
-                    <td style="vertical-align: top">{{ disk.get_disktype_display }} - {% if disk.diskfilename %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download Images</a>{% else %}missing{% endif %}
+                    <td style="vertical-align: top">{{ disk.get_disktype_display }} - {% if disk.diskfilename %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download (from: {{ disk.source }})</a>{% else %}missing{% endif %}
                     {% if disk.diskcomment %}<br />Info: {{ disk.diskcomment }}<br />{% endif %}</td>
                 </tr>                        
             {% endfor %}
