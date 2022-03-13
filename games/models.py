@@ -255,7 +255,7 @@ class Image(models.Model):
         return self.get_imgtype_display()
 
 class Disk(models.Model):
-    diskfilename = models.CharField("Image-Datei der Medien",max_length=250)
+    diskfilename = models.CharField("Image-Datei der Medien",max_length=250,blank=True,default="")
     #imgfilename = 'https://timberserver.de/gddb/media/disks/'+diskfilename
     rlstitle = models.ForeignKey(Release, related_name="releasetitle2", on_delete=models.CASCADE,verbose_name="Release")
     floppy35 = 'F35'
@@ -322,7 +322,7 @@ class Disk(models.Model):
         return self.get_disktype_display()
 
 class Extra(models.Model):
-    extrafilename = models.CharField("Dateiname",max_length=250)
+    extrafilename = models.CharField("Dateiname",max_length=250,blank=True,default="")
     #imgfilename = 'https://timberserver.de/gddb/media/extras/'+extrafilename
     rlstitle = models.ForeignKey(Release, related_name="releasetitle3", on_delete=models.CASCADE,verbose_name="Release")
     manual = 'MAN'
