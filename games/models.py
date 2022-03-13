@@ -142,7 +142,6 @@ class Release(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     speech = models.CharField("Sprachausgabe",max_length=250)
     text = models.CharField("Textsprachen",max_length=250)
-    timberown = models.BooleanField("Im Besitz",default=False)
 
     barcode = models.CharField("Barcode",max_length=250)
     usk = models.CharField("USK-Freigabe",max_length=100)
@@ -150,6 +149,36 @@ class Release(models.Model):
     archivelink = models.CharField("Eintrags auf archive.org",max_length=300,blank=True,default="")
     rawfile = models.CharField("Raw-Files Dateiname",max_length=250,blank=True,default="")
     content = models.TextField()
+
+    good = '1'
+    ok = '2'
+    bad = '3'    
+    quali_CHOICES = [
+        (good, '1 - Gut'),
+        (ok, '2 - Ausreichend'),
+        (bad, '3 - Schlecht'),
+    ]
+    quali = models.CharField(
+        "Qualität:",
+        max_length=1,
+        choices=quali_CHOICES,
+        default=good,
+    )
+    comment = models.TextField("Kommentar",blank=True)
+
+    timberown = models.BooleanField("Im Besitz",default=False)
+    timberquali_CHOICES = [
+        (good, '1 - Gut'),
+        (ok, '2 - Ausreichend'),
+        (bad, '3 - Schlecht'),
+    ]
+    timberquali = models.CharField(
+        "Qualität:",
+        max_length=1,
+        choices=timberquali_CHOICES,
+        default=good,
+    )
+    timbercomment = models.TextField("Kommentar",blank=True)     
 
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -199,8 +228,35 @@ class Image(models.Model):
         default=cover,
     )
     imgdescr = models.CharField("Beschreibung",max_length=250,blank=True)
+    good = '1'
+    ok = '2'
+    bad = '3'    
+    imgquali_CHOICES = [
+        (good, '1 - Gut'),
+        (ok, '2 - Ausreichend'),
+        (bad, '3 - Schlecht'),
+    ]
+    imgquali = models.CharField(
+        "Qualität:",
+        max_length=1,
+        choices=imgquali_CHOICES,
+        default=good,
+    )    
     imgcomment = models.TextField("Kommentar",blank=True)
     source = models.CharField("Von wem ist das Bild",max_length=300,default="Timber")
+    timberown = models.BooleanField("Im Besitz",default=False)
+    timberquali_CHOICES = [
+        (good, '1 - Gut'),
+        (ok, '2 - Ausreichend'),
+        (bad, '3 - Schlecht'),
+    ]
+    timberquali = models.CharField(
+        "Qualität:",
+        max_length=1,
+        choices=timberquali_CHOICES,
+        default=good,
+    )
+    timbercomment = models.TextField("Kommentar",blank=True)    
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
@@ -239,9 +295,35 @@ class Disk(models.Model):
     )
     diskcount = models.IntegerField()
     diskdescr = models.CharField("Beschreibung",max_length=250,blank=True)
+    good = '1'
+    ok = '2'
+    bad = '3'    
+    quali_CHOICES = [
+        (good, '1 - Gut'),
+        (ok, '2 - Ausreichend'),
+        (bad, '3 - Schlecht'),
+    ]
+    quali = models.CharField(
+        "Qualität:",
+        max_length=1,
+        choices=quali_CHOICES,
+        default=good,
+    )
     diskcomment = models.TextField("Kommentar",blank=True)
     source = models.CharField("Von wem ist der Rip",max_length=300,default="Timber")
     timberown = models.BooleanField("Im Besitz",default=False)
+    timberquali_CHOICES = [
+        (good, '1 - Gut'),
+        (ok, '2 - Ausreichend'),
+        (bad, '3 - Schlecht'),
+    ]
+    timberquali = models.CharField(
+        "Qualität:",
+        max_length=1,
+        choices=timberquali_CHOICES,
+        default=good,
+    )
+    timbercomment = models.TextField("Kommentar",blank=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
@@ -279,11 +361,36 @@ class Extra(models.Model):
     extratypedescr = models.CharField("Typ Beschreibung",max_length=250,blank=True)
     extralanguage = models.CharField("Sprache(n)",max_length=250,default="de")
     extrapages = models.IntegerField("Anzahl Seiten")
-    extraquality = models.IntegerField("Qualität")
     extradescr = models.CharField("Beschreibung",max_length=250,blank=True)
+    good = '1'
+    ok = '2'
+    bad = '3'    
+    extraquali_CHOICES = [
+        (good, '1 - Gut'),
+        (ok, '2 - Ausreichend'),
+        (bad, '3 - Schlecht'),
+    ]
+    extraquali = models.CharField(
+        "Qualität:",
+        max_length=1,
+        choices=extraquali_CHOICES,
+        default=good,
+    )    
     extracomment = models.TextField("Kommentar",blank=True)
     extrasource = models.CharField("Von wem ist der Scan",max_length=300,default="Timber")
     timberown = models.BooleanField("Im Besitz",default=False)
+    timberquali_CHOICES = [
+        (good, '1 - Gut'),
+        (ok, '2 - Ausreichend'),
+        (bad, '3 - Schlecht'),
+    ]
+    timberquali = models.CharField(
+        "Qualität:",
+        max_length=1,
+        choices=timberquali_CHOICES,
+        default=good,
+    )
+    timbercomment = models.TextField("Kommentar",blank=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
