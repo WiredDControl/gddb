@@ -1,11 +1,12 @@
 {% extends 'releases/base.html' %}
 
 {% load image_previewfile %}
+{% load static %}
 
 {% block content %}
     <article class="game">
         <div class="coverimage">
-            <img src="https://archive.org/download/{{ release.archivelink }}/{{ release.coverfilename }}">
+            {% if release.coverfilename %}<img src="https://archive.org/download/{{ release.archivelink }}/{{ release.coverfilename }}">{% else %}<img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />{% endif %}
         </div>        
         {% if release.published_date %}
             <time class="date">
@@ -33,7 +34,7 @@
         <table class="disks">
             {% for disk in disks %}
                 <tr>
-                    <td style="vertical-align: top">{{ disk.get_disktype_display }} - {% if disk.diskfilename %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download</a> (from: {{ disk.source }}){% else %}missing{% endif %}
+                    <td style="vertical-align: top">{{ disk.get_disktype_display }} - {% if disk.diskfilename %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download</a> (rip: {{ disk.source }}){% else %}missing{% endif %}
                     {% if disk.diskcomment %}<br /><span style="color:red;">Info: {{ disk.diskcomment }}</span><br />{% endif %}</td>
                 </tr>                        
             {% endfor %}
@@ -45,7 +46,7 @@
         <table class="extras">
             {% for extra in extras %}
             <tr>
-                <td>{% if extra.extratypedescr %}{{ extra.extratypedescr }}{% else %}{{ extra.get_extratype_display }}{% endif %} - {% if extra.extrafilename %}<a href="https://archive.org/download/{{ release.archivelink }}/{{ extra.extrafilename }}">Download File</a> (from: {{ extra.extrasource }}){% else %}missing{% endif %}<br />
+                <td>{% if extra.extratypedescr %}{{ extra.extratypedescr }}{% else %}{{ extra.get_extratype_display }}{% endif %} - {% if extra.extrafilename %}<a href="https://archive.org/download/{{ release.archivelink }}/{{ extra.extrafilename }}">Download</a> (scan: {{ extra.extrasource }}){% else %}missing{% endif %}<br />
                     {% if extra.extradescr %}({{ extra.extradescr }}){% endif %}
                 </td>
                 <tr>
