@@ -1,12 +1,13 @@
 #from tkinter import Image
 from django.contrib import admin
-from .models import Developer, Game,Genre,GLP, Publisher, Release, Image, Disk, Extra
+from .models import Developer, Game,Genre,GLP, Publisher, Release, Image, Disk, Extra, Platform
 
 admin.site.register(Game)
 admin.site.register(Genre)
 admin.site.register(Developer)
 admin.site.register(Publisher)
 admin.site.register(GLP)
+admin.site.register(Platform)
 
 class ImageAdmin(admin.ModelAdmin):
     list_display = ('rlstitle', 'imgtype')

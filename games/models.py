@@ -61,6 +61,21 @@ class Game(models.Model):
     def __str__(self):
         return self.title
 
+class Platform(models.Model):
+    platformname = models.CharField("Name",max_length=250,default="")
+    platformshort = models.CharField("Abkürzung",max_length=250,default="")
+    platformdescr = models.TextField("Beschreibung",blank=True)
+    platformimgfilename = models.CharField("Logo",max_length=250,blank=True,default="")
+
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.platformname
 
 class GLP(models.Model):
     glptitle = models.CharField(max_length=250)
@@ -104,21 +119,7 @@ class Release(models.Model):
     rlstitle = models.CharField("Release",max_length=250)
     coverfilename = models.CharField("Cover-Dateiname",max_length=250,blank=True,default="")
     title = models.ForeignKey(Game, on_delete=models.CASCADE)
-    dos = 'DOS'
-    win3x = 'W3X'
-    win9x = 'W9X'
-    winxx = 'WXX'
-    platform_CHOICES = [
-        (dos, 'MS-DOS'),
-        (win3x, 'Windows 3x'),
-        (win9x, 'Windows 9x'),
-        (winxx, 'Windows'),
-    ]
-    platform = models.CharField(
-        max_length=3,
-        choices=platform_CHOICES,
-        default=dos,
-    )
+    #platformlnk = models.ForeignKey(Platform, on_delete=models.CASCADE, default="1")
     floppy35 = 'F3'
     floppy52 = 'F5'
     cdrom = 'CD'

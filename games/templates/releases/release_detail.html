@@ -18,6 +18,7 @@
         {% endif %}        
         <h5>Developer: {{ release.developer }}</h5>
         <h5>Publisher: {{ release.publisher }}</h5>
+        
         <br />
         <br />
         <h4>Infos:</h4>
@@ -26,10 +27,6 @@
         <p></p>
         <p>{{ release.content|linebreaksbr }}</p>
         <br />
-        {% if release.rawfile %}
-        <h5>Raw-Files: <a href="https://archive.org/download/{{ release.archivelink }}/{{ release.rawfile }}">Download</a></h5>
-        <br />
-        {% endif %}
         <br />
         {% if user.is_authenticated %}
         <h4>Disks/Discs:</h4>
@@ -75,6 +72,12 @@
             {% endfor %}         
             </tr>
         </table>
+        <br />
+        <br />
+        {% if release.rawfile %}
+        <h5>Raw-Files: <a href="https://archive.org/download/{{ release.archivelink }}/{{ release.rawfile }}">Download</a></h5>
+        <br />
+        {% endif %}
     </article>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
