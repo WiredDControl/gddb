@@ -45,7 +45,7 @@
         <table class="extras">
             {% for extra in extras %}
             <tr>
-                <td>{% if extra.extratypedescr %}{{ extra.extratypedescr }}{% else %}{{ extra.get_extratype_display }}{% endif %} - {% if extra.extrafilename %}<a href="https://archive.org/download/{{ release.archivelink }}/{{ extra.extrafilename }}">Download File</a>{% else %}missing{% endif %}<br />
+                <td>{% if extra.extratypedescr %}{{ extra.extratypedescr }}{% else %}{{ extra.get_extratype_display }}{% endif %} - {% if extra.extrafilename %}<a href="https://archive.org/download/{{ release.archivelink }}/{{ extra.extrafilename }}">Download File</a> (from: {{ extra.extrasource }}){% else %}missing{% endif %}<br />
                     {% if extra.extradescr %}({{ extra.extradescr }}){% endif %}
                 </td>
                 <tr>
