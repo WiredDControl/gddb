@@ -34,7 +34,7 @@
         <table class="disks">
             {% for disk in disks %}
                 <tr>
-                    <td style="vertical-align: top">{{ disk.get_disktype_display }} - {% if disk.diskfilename %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download</a> (rip: {{ disk.source }}){% else %}missing{% endif %}
+                    <td style="vertical-align: top">{{ disk.get_disktype_display }} - {% if disk.diskfilename %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download</a> (rip: {{ disk.source }}){% else %}<span style="color:red;">missing</span>{% endif %}
                     {% if disk.diskcomment %}<br /><span style="color:red;">Info: {{ disk.diskcomment }}</span><br />{% endif %}</td>
                 </tr>                        
             {% endfor %}
@@ -46,8 +46,7 @@
         <table class="extras">
             {% for extra in extras %}
             <tr>
-                <td>{% if extra.extratypedescr %}{{ extra.extratypedescr }}{% else %}{{ extra.get_extratype_display }}{% endif %} - {% if extra.extrafilename %}<a href="https://archive.org/download/{{ release.archivelink }}/{{ extra.extrafilename }}">Download</a> (scan: {{ extra.extrasource }}){% else %}missing{% endif %}<br />
-                    {% if extra.extradescr %}({{ extra.extradescr }}){% endif %}
+                <td>{% if extra.extratypedescr %}{{ extra.extratypedescr }}{% else %}{{ extra.get_extratype_display }}{% endif %} {% if extra.extradescr %}({{ extra.extradescr }}) {% endif %}- {% if extra.extrafilename %}<a href="https://archive.org/download/{{ release.archivelink }}/{{ extra.extrafilename }}">Download</a> (scan: {{ extra.extrasource }}){% else %}<span style="color:red;">missing</span>{% endif %}<br />
                 </td>
                 <tr>
                     <td colspan="3"></td>
