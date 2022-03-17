@@ -5,7 +5,7 @@ from .models import Game,GLP,Release,Image,Disk,Extra
 from .forms import GLPForm,ImageForm
 
 def games_list(request):
-    games = Game.objects.filter(published_date__lte=timezone.now()).order_by('-title').prefetch_related('glps')
+    games = Game.objects.filter(published_date__lte=timezone.now()).order_by('title').prefetch_related('glps')
     return render(request, 'games/games_list.html', {'games': games})
 
 def game_detail(request, pk):
@@ -15,7 +15,7 @@ def game_detail(request, pk):
     except:
         glpid = None
     try:
-        releases = Release.objects.filter(title_id=pk,published_date__lte=timezone.now()).order_by('-year')
+        releases = Release.objects.filter(title_id=pk,published_date__lte=timezone.now()).order_by('year')
     except:
         releases = None
     return render(request, 'games/game_detail.html', {'game': game, 'glpid' : glpid, 'releases' : releases})
