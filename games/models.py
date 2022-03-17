@@ -150,24 +150,12 @@ class Release(models.Model):
     archivelink = models.CharField("Eintrags auf archive.org",max_length=300,blank=True,default="")
     rawfile = models.CharField("Raw-Files Dateiname",max_length=250,blank=True,default="")
     content = models.TextField()
-
-    good = '1'
-    ok = '2'
-    bad = '3'    
-    quali_CHOICES = [
-        (good, '1 - Gut'),
-        (ok, '2 - Ausreichend'),
-        (bad, '3 - Schlecht'),
-    ]
-    quali = models.CharField(
-        "Qualität:",
-        max_length=1,
-        choices=quali_CHOICES,
-        default=good,
-    )
     comment = models.TextField("Kommentar",blank=True)
 
     timberown = models.BooleanField("Im Besitz",default=False)
+    good = '1'
+    ok = '2'
+    bad = '3'     
     timberquali_CHOICES = [
         (good, '1 - Gut'),
         (ok, '2 - Ausreichend'),

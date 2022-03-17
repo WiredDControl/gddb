@@ -34,7 +34,7 @@
         <table class="disks">
             {% for disk in disks %}
                 <tr>
-                    <td style="vertical-align: top">{{ disk.get_disktype_display }} - {% if disk.diskfilename %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download</a> (rip: {{ disk.source }}){% else %}<span style="color:red;">missing</span>{% endif %}
+                    <td style="vertical-align: top">{{ disk.get_disktype_display }}{% if disk.diskfilename %} - <a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download</a> (rip: <span style="color:green;">{{ disk.source }}</span>, {% if disk.timberown %}<span style="color:green;">auch enthalten</span>{% else %}<span style="color:red;">fehlt aber</span>{% endif %} in Timber's Collection){% else %} (rip: <span style="color:red;">fehlt</span>, {% if disk.timberown %}<span style="color:green;">aber enthalten</span>{% else %}<span style="color:red;">fehlt auch</span>{% endif %} in Timber's Collection){% endif %}
                     {% if disk.diskcomment %}<br /><span style="color:red;">Info: {{ disk.diskcomment }}</span><br />{% endif %}</td>
                 </tr>                        
             {% endfor %}
@@ -46,7 +46,7 @@
         <table class="extras">
             {% for extra in extras %}
             <tr>
-                <td>{% if extra.extratypedescr %}{{ extra.extratypedescr }}{% else %}{{ extra.get_extratype_display }}{% endif %} {% if extra.extradescr %}({{ extra.extradescr }}) {% endif %}- {% if extra.extrafilename %}<a href="https://archive.org/download/{{ release.archivelink }}/{{ extra.extrafilename }}">Download</a> (scan: {{ extra.extrasource }}){% else %}<span style="color:red;">missing</span>{% endif %}<br />
+                <td>{% if extra.extratypedescr %}{{ extra.extratypedescr }}{% else %}{{ extra.get_extratype_display }}{% endif %} {% if extra.extradescr %}({{ extra.extradescr }}) {% endif %}- {% if extra.extrafilename %}<a href="https://archive.org/download/{{ release.archivelink }}/{{ extra.extrafilename }}">Download</a> (scan: <span style="color:green;">{{ extra.extrasource }}</span>, {% if extra.timberown %}<span style="color:green;">auch enthalten</span>{% else %}<span style="color:red;">fehlt aber</span>{% endif %} in Timber's Collection)){% else %} (scan: <span style="color:red;">fehlt</span>,  {% if extra.timberown %}<span style="color:green;">aber enthalten</span>{% else %}<span style="color:red;">fehlt auch</span>{% endif %} in Timber's Collection){% endif %}<br />
                 </td>
                 <tr>
                     <td colspan="3"></td>
