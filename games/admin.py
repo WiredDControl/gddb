@@ -2,12 +2,27 @@
 from django.contrib import admin
 from .models import Developer, Game,Genre,GLP, Publisher, Release, Image, Disk, Extra, Platform
 
-admin.site.register(Game)
-admin.site.register(Genre)
-admin.site.register(Developer)
-admin.site.register(Publisher)
+class GameAdmin(admin.ModelAdmin):
+    ordering = ['title']
+admin.site.register(Game, GameAdmin)
+
+class GenreAdmin(admin.ModelAdmin):
+    ordering = ['name']
+admin.site.register(Genre, GenreAdmin)
+
+class DeveloperAdmin(admin.ModelAdmin):
+    ordering = ['name']
+admin.site.register(Developer, DeveloperAdmin)
+
+class PublisherAdmin(admin.ModelAdmin):
+    ordering = ['name']
+admin.site.register(Publisher, PublisherAdmin)
+
 admin.site.register(GLP)
-admin.site.register(Platform)
+
+class PlatformAdmin(admin.ModelAdmin):
+    ordering = ['platformname']
+admin.site.register(Platform, PlatformAdmin)
 
 class ImageAdmin(admin.ModelAdmin):
     list_display = ('rlstitle', 'imgtype')
