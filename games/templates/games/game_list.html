@@ -20,6 +20,7 @@
             </span>
         </div>
         {% endif %}       
+        <p>&nbsp;</p>
         <ul>{% for game in game_list %}
             <li><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></li>
             {% endfor %}
