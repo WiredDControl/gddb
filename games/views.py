@@ -14,6 +14,7 @@ def games_list(request):
 class games_list(ListView):
     model = Game
     paginate_by = 30
+    ordering = ['-title']
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

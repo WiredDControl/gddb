@@ -319,6 +319,7 @@ class Extra(models.Model):
     map = 'MAP'
     regcard = 'REG'
     hintbook = 'HBK'
+    codewheel = 'CDW'
     other = 'OTH'
     extratype_CHOICES = [
         (manual, 'Handbuch'),
@@ -326,6 +327,7 @@ class Extra(models.Model):
         (map, 'Karte/Poster'),
         (regcard, 'Registrationskarte'),
         (hintbook, 'Lösungsbuch'),
+        (codewheel, 'Code-Wheel'),
         (other, 'other...'),
     ]
     extratype = models.CharField(
