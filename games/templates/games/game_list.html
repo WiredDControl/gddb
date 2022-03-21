@@ -4,7 +4,22 @@
 
 {% block content %}
     <h1>Games List</h1>
-    {% if game_list %}    
+    {% if game_list %} 
+        {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/?page={{ page_obj.previous_page_number }}">vorherige Seite</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/?page={{ page_obj.next_page_number }}">nächste Seite</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}       
         <ul>{% for game in game_list %}
             <li><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></li>
             {% endfor %}
@@ -13,13 +28,13 @@
         <div class="pagination">
             <span class="page-links">
                 {% if page_obj.has_previous %}
-                    <a href="/?page={{ page_obj.previous_page_number }}">previous</a>
+                    <a href="/?page={{ page_obj.previous_page_number }}">vorherige Seite</a>
                 {% endif %}
                 <span class="page-current">
                     Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                 </span>
                 {% if page_obj.has_next %}
-                    <a href="/?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="/?page={{ page_obj.next_page_number }}">nächste Seite</a>
                 {% endif %}
             </span>
         </div>
@@ -27,5 +42,7 @@
     {% else %}
         <p>Keine Spiele gefunden!</p>    
     {% endif %}
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
 {% endblock %}
 
