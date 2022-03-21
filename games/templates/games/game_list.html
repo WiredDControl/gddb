@@ -1,0 +1,12 @@
+{% extends 'games/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Games List</h1>
+    <ul>{% for game in game_list %}
+        <li><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

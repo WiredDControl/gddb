@@ -1,12 +1,24 @@
 from unicodedata import numeric
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from .models import Game,GLP,Release,Image,Disk,Extra
 from .forms import GLPForm,ImageForm
 
+'''
 def games_list(request):
     games = Game.objects.filter(published_date__lte=timezone.now()).order_by('title').prefetch_related('glps')
     return render(request, 'games/games_list.html', {'games': games})
+'''
+
+class games_list(ListView):
+    model = Game
+    paginate_by = 30
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
 
 def game_detail(request, pk):
     game = get_object_or_404(Game, pk=pk)
