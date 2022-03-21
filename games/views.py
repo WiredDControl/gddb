@@ -1,6 +1,7 @@
 from unicodedata import numeric
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from .models import Game,GLP,Release,Image,Disk,Extra
 from .forms import GLPForm,ImageForm
@@ -14,8 +15,8 @@ def games_list(request):
 class games_list(ListView):
     model = Game
     paginate_by = 30
-    ordering = ['-title']
-    
+    ordering = ['title']
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()

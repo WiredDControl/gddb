@@ -4,9 +4,28 @@
 
 {% block content %}
     <h1>Games List</h1>
-    <ul>{% for game in game_list %}
-        <li><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></li>
-        {% endfor %}
-    </ul>
+    {% if game_list %}    
+        <ul>{% for game in game_list %}
+            <li><a href="{% url 'game_detail' pk=game.pk %}">{{ game.title }}</a></li>
+            {% endfor %}
+        </ul>
+        {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/games_list?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/games_list?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}        
+    {% else %}
+        <p>Keine Spiele gefunden!</p>    
+    {% endif %}
 {% endblock %}
 
