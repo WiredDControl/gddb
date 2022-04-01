@@ -74,10 +74,14 @@ h4 {
 
 #included {
     fill: #00FF00;
+    width: 16px;
+    height: 16px;
 }
 
 #notincluded {
     fill: #ff0000;
+    width: 16px;
+    height: 16px;
 }
 
 #iconyes,
