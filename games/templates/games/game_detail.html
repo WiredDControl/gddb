@@ -30,7 +30,7 @@
             <th style="padding-left: 10px;">in Timber's collection:</th>
         </tr>
         {% for release in releases %}
-          <tr>
+          <tr style="background-color: #91fd91;">
             <td style="padding-top: 10px;">{% if release.coverfilename %}<img src="https://archive.org/download/{{ release.archivelink }}/{{ release.coverfilename }}">{% else %}<img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />{% endif %}</td>
             <td style="width: 600px;vertical-align: top;padding-left: 10px;"><a href="{% url 'release_detail' pk=release.pk %}">{{ release.rlstitle }} ({{ release.year }}, {{ release.platformlnk.platformname }} - {{ release.get_media_display }})</a></td>
             <td style="padding-left: 6px; vertical-align: top;padding-left: 10px;">
