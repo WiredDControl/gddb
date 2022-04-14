@@ -30,11 +30,7 @@ class releases_list(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
-        context['filter'] = self.model.objects.filter(archivelink__isnull = False)
         return context
-
-    def get_queryset(self):
-        return self.model.objects.filter(archivelink__isnull = False)        
 
 def game_detail(request, pk):
     game = get_object_or_404(Game, pk=pk)

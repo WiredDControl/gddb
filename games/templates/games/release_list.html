@@ -29,7 +29,6 @@
                 <th style="padding-left: 10px;">in Timber's collection:</th>
             </tr>        
             {% for release in release_list %}
-                {% if release.archivelink %}
                 {% if release.timberown %}
                 <tr style="background-color: #91fd91;">
                 {% else %}
@@ -45,7 +44,6 @@
                         {% endif %}
                     </td>
                 </tr>
-                {% endif %}
             {% endfor %}
         </table>
 
