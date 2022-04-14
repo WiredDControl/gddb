@@ -32,6 +32,9 @@ class releases_list(ListView):
         context['now'] = timezone.now()
         return context
 
+    def get_queryset(self):
+        return self.model.objects.filter(archivelink__isnull = False)        
+
 def game_detail(request, pk):
     game = get_object_or_404(Game, pk=pk)
     try:
