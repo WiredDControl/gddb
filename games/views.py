@@ -25,7 +25,7 @@ class games_list(ListView):
 class releases_list(ListView):
     model = Release
     paginate_by = 20
-    ordering = ['rlstitle']
+    ordering = ['-created_date']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
