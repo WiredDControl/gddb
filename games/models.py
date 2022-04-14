@@ -49,6 +49,7 @@ class Game(models.Model):
     title = models.CharField(max_length=250)
     description = models.TextField()
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    eXoID = models.IntegerField(default="0")
     mobygameslink = models.CharField(max_length=300,blank=True,default="")
     ogdblink = models.CharField(max_length=300,blank=True,default="")
     created_date = models.DateTimeField(default=timezone.now)
@@ -143,7 +144,7 @@ class Release(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     speech = models.CharField("Sprachausgabe",max_length=250)
     text = models.CharField("Textsprachen",max_length=250)
-
+    addon = models.BooleanField("Addon?",default=False)
     barcode = models.CharField("Barcode",max_length=250)
     usk = models.CharField("USK-Freigabe",max_length=100)
     ogdblink = models.CharField("Link zu OGDB",max_length=300,blank=True,default="")
