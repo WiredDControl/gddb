@@ -1,0 +1,71 @@
+{% extends 'releases/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Neueste Releases:</h1>
+    {% if release_list %} 
+        {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/?page={{ page_obj.previous_page_number }}">vorherige Seite</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/?page={{ page_obj.next_page_number }}">nächste Seite</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}       
+
+        <p>&nbsp;</p>
+        <table>
+            <tr>
+                <th>Cover:</th>
+                <th style="padding-left: 10px;">Name:</th>            
+                <th style="padding-left: 10px;">in Timber's collection:</th>
+            </tr>        
+            {% for release in release_list %}
+                {% if release.timberown %}
+                <tr style="background-color: #91fd91;">
+                {% else %}
+                <tr style="background-color: #ffffff;">
+                {% endif %}
+                    <td style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px;">{% if release.coverfilename %}<img src="https://archive.org/download/{{ release.archivelink }}/{{ release.coverfilename }}">{% else %}<img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />{% endif %}</td>
+                    <td style="width: 600px;vertical-align: top;padding-left: 10px;"><a href="{% url 'release_detail' pk=release.pk %}">{{ release.rlstitle }} ({{ release.year }}, {{ release.platformlnk.platformname }} - {{ release.get_media_display }})</a></td>
+                    <td style="padding-left: 6px; vertical-align: top;padding-left: 10px;">
+                        {% if release.timberown %}
+                        <img id="included" src="{% static '/icons/check-circle-fill-green.svg' %}" alt="included" /></a>
+                        {% else %}
+                        {# <img id="notincluded" src="{% static '/icons/x-circle-fill.svg' %}"  alt="not included" /> #}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/?page={{ page_obj.previous_page_number }}">vorherige Seite</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/?page={{ page_obj.next_page_number }}">nächste Seite</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}        
+    {% else %}
+        <p>Keine Releases gefunden!</p>    
+    {% endif %}
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+{% endblock %}
+

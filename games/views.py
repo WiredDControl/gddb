@@ -22,6 +22,16 @@ class games_list(ListView):
         context['now'] = timezone.now()
         return context
 
+class releases_list(ListView):
+    model = Release
+    paginate_by = 20
+    ordering = ['rlstitle']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
+
 def game_detail(request, pk):
     game = get_object_or_404(Game, pk=pk)
     try:
