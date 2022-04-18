@@ -2,6 +2,8 @@ from unicodedata import numeric
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 from django.utils import timezone
 from .models import Game,GLP,Release,Image,Disk,Extra
 from .forms import GLPForm,ImageForm
@@ -11,6 +13,29 @@ def games_list(request):
     games = Game.objects.filter(published_date__lte=timezone.now()).order_by('title').prefetch_related('glps')
     return render(request, 'games/games_list.html', {'games': games})
 '''
+
+def releases_view(request):
+    ctx = {}
+    url_parameter = request.GET.get("q")
+
+    if url_parameter:
+        releases = Release.objects.filter(name__icontains=url_parameter)
+    else:
+        releases = Release.objects.all()
+
+    ctx["releases"] = releases
+    does_req_accept_json = request.accepts("application/json")
+    is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest" and does_req_accept_json
+
+    if is_ajax_request:
+
+        html = render_to_string(
+            template_name="releases-results-partial.html", context={"releases": releases}
+        )
+        data_dict = {"html_from_view": html}
+        return JsonResponse(data=data_dict, safe=False)
+
+    return render(request, "releases.html", context=ctx)
 
 class games_list(ListView):
     model = Game
