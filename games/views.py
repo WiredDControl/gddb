@@ -14,7 +14,7 @@ def games_list(request):
     return render(request, 'games/games_list.html', {'games': games})
 '''
 
-def releases_view(request):
+def releasesearch(request):
     ctx = {}
     url_parameter = request.GET.get("q")
 
