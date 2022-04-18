@@ -19,7 +19,7 @@ def releasesearch(request):
     url_parameter = request.GET.get("q")
 
     if url_parameter:
-        releases = Release.objects.filter(name__icontains=url_parameter)
+        releases = Release.objects.filter(rlstitle__icontains=url_parameter)
     else:
         releases = Release.objects.all()
 
@@ -35,7 +35,7 @@ def releasesearch(request):
         data_dict = {"html_from_view": html}
         return JsonResponse(data=data_dict, safe=False)
 
-    return render(request, "releases.html", context=ctx)
+    return render(request, "releases/releases.html", context=ctx)
 
 class games_list(ListView):
     model = Game
