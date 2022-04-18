@@ -30,7 +30,7 @@ def releasesearch(request):
     if is_ajax_request:
 
         html = render_to_string(
-            template_name="games/releases-results-partial.html", context={"releases": releases}
+            template_name="releases-results-partial.html", context={"releases": releases}
         )
         data_dict = {"html_from_view": html}
         return JsonResponse(data=data_dict, safe=False)
