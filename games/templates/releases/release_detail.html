@@ -31,6 +31,13 @@
         <p>{{ release.content|linebreaksbr }}</p>
         <br />
         <br />
+        <h4>Kommentar:</h4>
+        <p>{{ release.comment|linebreaksbr }}</p>
+        <br />
+        <br />
+        <p>{{ release.timbercomment|linebreaksbr }}</p>
+        <br />
+        <br />
         {% if user.is_authenticated %}
         <h4>Disks/Discs:</h4>
         <table class="disks">
