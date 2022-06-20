@@ -170,6 +170,7 @@ class Release(models.Model):
     )
     timbercomment = models.TextField("Kommentar",blank=True)
     timberprice = models.CharField("Kaufpreis (Netto) in EUR",max_length=20,blank=True,default="0,00")
+    timberbuydate = models.DateTimeField(blank=True, null=True)
 
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
