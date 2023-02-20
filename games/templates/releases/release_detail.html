@@ -39,7 +39,7 @@
         <br />
         {% endif %}
         {% if release.timbercomment %}
-        <p>{{ release.timbercomment|linebreaksbr }}</p>
+        <p><span style="color:red;">{{ release.timbercomment|linebreaksbr }}</span></p>
         <br />
         <br />
         {% endif %}
@@ -47,7 +47,7 @@
         <table class="disks">
             {% for disk in disks %}
                 <tr>
-                    <td style="vertical-align: top">{{ disk.diskcount }}x {{ disk.get_disktype_display }}{% if disk.diskfilename %} - {% if user.is_authenticated %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download</a>{% else %}Download (nur registrierte User){% endif %} (rip: <span style="color:green;">{{ disk.source }}</span>, {% if disk.timberown %}<span style="color:green;">auch enthalten</span>{% else %}<span style="color:red;">fehlt aber</span>{% endif %} in Timber's Collection){% else %} (rip: <span style="color:red;">fehlt</span>, {% if disk.timberown %}<span style="color:green;">aber enthalten</span>{% else %}<span style="color:red;">fehlt auch</span>{% endif %} in Timber's Collection){% endif %}
+                    <td style="vertical-align: top">{{ disk.get_disktype_display }} #{{ disk.diskcount }} {% if disk.diskfilename %} - {% if user.is_authenticated %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download</a>{% else %}Download (nur registrierte User){% endif %} (rip: <span style="color:green;">{{ disk.source }}</span>, {% if disk.timberown %}<span style="color:green;">auch enthalten</span>{% else %}<span style="color:red;">fehlt aber</span>{% endif %} in Timber's Collection){% else %} (rip: <span style="color:red;">fehlt</span>, {% if disk.timberown %}<span style="color:green;">aber enthalten</span>{% else %}<span style="color:red;">fehlt auch</span>{% endif %} in Timber's Collection){% endif %}
                     {% if disk.diskdescr %}<br /><span style="color:red;">Info: {{ disk.diskdescr }}</span>{% endif %}
                     {% if disk.diskcomment %}<br /><span style="color:red;">Info: {{ disk.diskcomment }}</span>{% endif %}<br />
                     </td>
