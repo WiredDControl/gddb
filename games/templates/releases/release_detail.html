@@ -42,6 +42,10 @@
         <p><span style="color:red;">{{ release.timbercomment|linebreaksbr }}</span></p>
         <br />
         <br />
+        {% if release.toEulisker %}
+        <p><span style="color:red;">Ist bei / muss zu Eulisker:<br/>{{ release.toEuliskerComment|linebreaksbr }}</span></p>
+        <br />
+        <br />        
         {% endif %}
         <h4>Disks/Discs:</h4>
         <table class="disks">
