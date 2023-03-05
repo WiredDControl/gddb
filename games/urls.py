@@ -11,5 +11,6 @@ urlpatterns = [
     path('glp/new/', views.glp_new, name='glp_new'),
     path('glp/<int:pk>/edit/', views.glp_edit, name='glp_edit'),
     path('release/<int:pk>/', views.release_detail, name='release_detail'),
+    path('eulisker_list', views.eulisker_list, name='eulisker_list'),
     path('image/', views.image_upload_view)
 ]

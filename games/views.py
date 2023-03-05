@@ -56,6 +56,13 @@ class releases_list(ListView):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
         return context
+    
+def eulisker_list(request):
+    try:
+        eulisker_list = Release.objects.filter(toEulisker=1).order_by('rlstitle')
+    except:
+        eulisker_list = None
+    return render(request, 'eulisker/eulisker_list.html', {'eulisker_list': eulisker_list})
 
 def game_detail(request, pk):
     game = get_object_or_404(Game, pk=pk)
