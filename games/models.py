@@ -148,7 +148,7 @@ class Release(models.Model):
     barcode = models.CharField("Barcode",max_length=250)
     usk = models.CharField("USK-Freigabe",max_length=100)
     ogdblink = models.CharField("Link zu OGDB",max_length=300,blank=True,default="")
-    archivelink = models.CharField("Eintrags auf archive.org",max_length=300,blank=True,default="")
+    archivelink = models.CharField("Eintrag auf archive.org",max_length=300,blank=True,default="")
     rawfile = models.CharField("Raw-Files Dateiname",max_length=250,blank=True,default="")
     content = models.TextField()
     comment = models.TextField("Kommentar",blank=True)
@@ -172,6 +172,7 @@ class Release(models.Model):
     timberprice = models.CharField("Kaufpreis (Netto) in EUR",max_length=20,blank=True,default="0,00")
     timberbuydate = models.DateField("Kauf-Datum", blank=True, null=True)
     toEulisker = models.BooleanField("Eulisker?",default=False)
+    toEuliskerArchivelink = models.CharField("Eulisker-Eintrag auf archive.org",max_length=300,blank=True,default="")
     toEuliskerComment = models.TextField("Hinweis Eulisker",blank=True)
 
     created_date = models.DateTimeField(default=timezone.now)
