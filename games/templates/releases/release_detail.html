@@ -14,9 +14,9 @@
             </time>
         {% endif %}
         <h1><a href="{% url 'game_detail' pk=gameid.pk %}">{{ release.rlstitle }}</a><br />({{ release.year }} - {{ release.get_media_display }})</h1>
-            {% if release.ogdblink %}<h5><a href="{{ release.ogdblink }}">Release on OGDB</a></h5>{% endif %}
-            {% if release.archivelink %}<h5><a href="https://archive.org/details/{{ release.archivelink }}">Eintrag auf archive.org (Timber)</a></h5>{% endif %}
-            {% if release.toEuliskerArchivelink %}<h5><a href="https://archive.org/details/{{ release.toEuliskerArchivelink }}">Eintrag auf archive.org (Eulisker)</a></h5>{% endif %}        
+            {% if release.ogdblink %}<h5><a href="{{ release.ogdblink }}" target="blank">Release on OGDB</a></h5>{% endif %}
+            {% if release.archivelink %}<h5><a href="https://archive.org/details/{{ release.archivelink }}" target="blank">Eintrag auf archive.org (Timber)</a></h5>{% endif %}
+            {% if release.toEuliskerArchivelink %}<h5><a href="https://archive.org/details/{{ release.toEuliskerArchivelink }}" target="blank">Eintrag auf archive.org (Eulisker)</a></h5>{% endif %}        
         <h5>Developer: {{ release.developer }}</h5>
         <h5>Publisher: {{ release.publisher }}</h5>
         <h5>Platform: {{ release.platformlnk.platformname }}</h5>
