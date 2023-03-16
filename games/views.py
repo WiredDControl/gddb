@@ -62,7 +62,11 @@ def eulisker_list(request):
         eulisker_list = Release.objects.filter(toEulisker=1).order_by('rlstitle')
     except:
         eulisker_list = None
-    return render(request, 'eulisker/eulisker_list.html', {'eulisker_list': eulisker_list})
+    try:
+        eulisker_archivelist = Release.objects.filter(toEuliskerArchivelink="not None").order_by('rlstitle')
+    except:
+        eulisker_archivelist = None
+    return render(request, 'eulisker/eulisker_list.html', {'eulisker_list': eulisker_list, 'eulisker_archivelist': eulisker_archivelist})
 
 def game_detail(request, pk):
     game = get_object_or_404(Game, pk=pk)
