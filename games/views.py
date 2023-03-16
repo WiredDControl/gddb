@@ -63,7 +63,8 @@ def eulisker_list(request):
     except:
         eulisker_list = None
     try:
-        eulisker_archivelist = Release.objects.filter(toEuliskerArchivelink=not "").order_by('rlstitle')
+        #eulisker_archivelist = Release.objects.filter(toEuliskerArchivelink__gt="").order_by('rlstitle')
+        eulisker_archivelist = Release.objects.exclude(toEuliskerArchivelink__isnull=True).exclude(toEuliskerArchivelink__exact='').order_by('rlstitle')
     except:
         eulisker_archivelist = None
     return render(request, 'eulisker/eulisker_list.html', {'eulisker_list': eulisker_list, 'eulisker_archivelist': eulisker_archivelist})
