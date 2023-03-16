@@ -20,8 +20,9 @@
             <th style="padding-left: 10px;">Release:</th>            
         </tr>        
         {% for entry in eulisker_archivelist %}
-            <td style="width: 600px;vertical-align: top;padding-left: 10px;"><a href="{% url 'release_detail' pk=entry.pk %}">{{ entry.rlstitle }} ({{ entry.year }}, {{ entry.platformlnk.platformname }} - {{ entry.get_media_display }})</a></td>
+            <td style="width: 800px;vertical-align: top;padding-left: 10px;"><a href="{% url 'release_detail' pk=entry.pk %}">{{ entry.rlstitle }} ({{ entry.year }}, {{ entry.platformlnk.platformname }} - {{ entry.get_media_display }})</a></td>
             </tr>
         {% endfor %}
     </table>    
+    <br /><br />
 {% endblock %}
