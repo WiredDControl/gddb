@@ -7,7 +7,7 @@
     <article class="game">
         <div class="coverimage">
             {% if release.coverfilename %}<img src="https://archive.org/download/{{ release.archivelink }}/{{ release.coverfilename }}">{% else %}<img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />{% endif %}
-            {% if release.toEuliskerArchivelink %}<br /><img src="https://archive.org/download/{{ release.toEuliskerArchivelink }}/__ia_thumb.jpg">{% endif %}
+            {% if release.toEuliskerArchivelink %}<br /><br /><br /><img src="https://archive.org/download/{{ release.toEuliskerArchivelink }}/__ia_thumb.jpg">{% endif %}
         </div>        
         {% if release.published_date %}
             <time class="date">
