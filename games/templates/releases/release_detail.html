@@ -7,7 +7,7 @@
     <article class="game">
         <div class="coverimage">
             {% if user.is_authenticated %}
-            {% if release.coverfilename %}<br /><br /><br /><a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}_&ext=jpg&bg=ffffff" target="_blank"><object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}_&ext=jpg&bg=ffffff" style="height:400px;width:100%;border:none;"></object></a>{% else %}<img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />{% endif %}
+            {% if release.coverfilename %}<a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}_&ext=jpg&bg=ffffff" target="_blank"><object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}_&ext=jpg&bg=ffffff" style="height:500px;width:100%;border:none;"></object><br />(in neuem Fenster öffnen)</a>{% else %}<img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />{% endif %}
             {% else %}
             {% if release.coverfilename %}<img src="https://archive.org/download/{{ release.archivelink }}/{{ release.coverfilename }}">{% else %}<img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />{% endif %}
             {% endif %}
