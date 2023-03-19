@@ -7,7 +7,7 @@
     <article class="game">
         <div class="coverimage">
             {% if release.coverfilename %}<img src="https://archive.org/download/{{ release.archivelink }}/{{ release.coverfilename }}">{% else %}<img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />{% endif %}
-            {% if release.coverfilename %}<object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name=Apache%20(1995)_&ext=jpg" style="height:100px;width:100%;border:none;"></object>{% endif %}
+            {% if release.coverfilename %}<br /><br /><br /><object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name=Apache%20(1995)_&ext=jpg" style="height:200px;width:50%;border:none;"></object>{% endif %}
             {% if release.toEuliskerArchivelink %}<br /><br /><br /><img src="https://archive.org/download/{{ release.toEuliskerArchivelink }}/__ia_thumb.jpg">{% endif %}
         </div>        
         {% if release.published_date %}
