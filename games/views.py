@@ -19,9 +19,9 @@ def releasesearch(request):
     url_parameter = request.GET.get("q")
 
     if url_parameter:
-        releases = Release.objects.filter(rlstitle__icontains=url_parameter)
+        releases = Release.objects.filter(rlstitle__icontains=url_parameter).order_by("rlstitle")
     else:
-        releases = Release.objects.all()
+        releases = Release.objects.all().order_by("-created_date")
 
     ctx["releases"] = releases
     does_req_accept_json = request.accepts("application/json")
