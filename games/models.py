@@ -265,7 +265,7 @@ class Disk(models.Model):
         (floppy35, 'Floppy 3,5"'),
         (floppy35k, 'Floppy 3,5" (Kryoflux)'),
         (floppy52, 'Floppy 5,25"'),
-        (floppy52k, 'Floppy 5,25" (Kryoflux'),
+        (floppy52k, 'Floppy 5,25" (Kryoflux)'),
         (cdrom, 'CD-ROM'),
         (dvdrom, 'DVD-ROM'),
         (download, 'Download'),

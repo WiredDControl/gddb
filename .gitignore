@@ -11,6 +11,9 @@ gddb/
 # Datenbank
 db.sqlite3
 
+# scripts
+script_*
+
 # Static Ordner im Projektverzeichnis
 #static/
 
