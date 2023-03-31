@@ -18,7 +18,12 @@
                 {{ release.published_date }}
             </time>
         {% endif %}
-        <h1><a href="{% url 'game_detail' pk=gameid.pk %}">{{ release.rlstitle }}</a><br />({{ release.year }} - {{ release.get_media_display }})</h1>
+
+        {% if release.titles.all|length > 1 %}
+        <h1>Compilation: {{ release.rlstitle }}</a><br />({{ release.year }} - {{ release.get_media_display }})</h1>
+        {% else %}
+        <h1><a href="{% url 'game_detail' pk=firstgameid %}">{{ release.rlstitle }}</a><br />({{ release.year }} - {{ release.get_media_display }})</h1>
+        {% endif %}
             {% if release.ogdblink %}<h5><a href="{{ release.ogdblink }}" target="blank">Release on OGDB</a></h5>{% endif %}
             {% if release.archivelink %}<h5><a href="https://archive.org/details/{{ release.archivelink }}" target="blank">Eintrag auf archive.org (Timber)</a></h5>{% endif %}
             {% if release.toEuliskerArchivelink %}<h5><a href="https://archive.org/details/{{ release.toEuliskerArchivelink }}" target="blank">Eintrag auf archive.org (Eulisker)</a></h5>{% endif %}        
@@ -31,6 +36,14 @@
         {% if user.is_authenticated %}<h5>Kaufs/Verkaufsinfo: <br />{{ release.timberbuycomment }} </h5>{% endif %}
         <br />
         <br />
+        {% if release.titles.all|length > 1 %}
+        <h4>Enthaltene Spiele:</h4>
+        {% for titles in release.titles.all %}
+            <a href="{% url 'game_detail' pk=titles.id %}">{{ titles.title }}</a><br/>
+        {% endfor %}
+        <br />
+        <br />
+        {% endif %}        
         <h4>Infos:</h4>
         <p>Sprachausgabe: {{ release.speech }}
         <br />Texte: {{ release.text }}</p>

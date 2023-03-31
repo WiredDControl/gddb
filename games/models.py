@@ -119,7 +119,7 @@ class GLP(models.Model):
 class Release(models.Model):
     rlstitle = models.CharField("Release",max_length=250)
     coverfilename = models.CharField("Cover-Dateiname",max_length=250,blank=True,default="")
-    title = models.ForeignKey(Game, on_delete=models.CASCADE)
+    titles = models.ManyToManyField(Game, related_name="gametitle")
     platformlnk = models.ForeignKey(Platform, on_delete=models.CASCADE, default="1")
     floppy35 = 'F3'
     floppy52 = 'F5'

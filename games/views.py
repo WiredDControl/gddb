@@ -75,7 +75,9 @@ def game_detail(request, pk):
     except:
         glpid = None
     try:
-        releases = Release.objects.filter(title_id=pk,published_date__lte=timezone.now()).order_by('year')
+        #releases = Release.objects.filter(title_id=pk,published_date__lte=timezone.now()).order_by('year')
+        games = Game.objects.get(id=pk)
+        releases = games.gametitle.all()
     except:
         releases = None
     return render(request, 'games/game_detail.html', {'game': game, 'glpid' : glpid, 'releases' : releases})
@@ -90,10 +92,7 @@ def glp_detail(request, pk):
 
 def release_detail(request, pk):
     release = get_object_or_404(Release, pk=pk)
-    try:
-        gameid = Game.objects.get(id=release.title_id)
-    except:
-        gameid = None    
+    firstgameid = Release.objects.get(id=pk).titles.all()[0].id
     try:
         images = Image.objects.filter(rlstitle_id=pk)
     except:
@@ -109,7 +108,7 @@ def release_detail(request, pk):
     except:
         print("no disks found")
         extras = None
-    return render(request, 'releases/release_detail.html', {'release': release, 'images': images, 'disks': disks, 'extras': extras, 'gameid': gameid})
+    return render(request, 'releases/release_detail.html', {'release': release, 'images': images, 'disks': disks, 'extras': extras, 'firstgameid': firstgameid})
 
 def glp_new(request):
     if request.method == "POST":
