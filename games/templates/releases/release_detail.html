@@ -53,7 +53,7 @@
         <br />
         <h4>Kommentar:</h4>
         {% if release.comment %}
-        <p>{{ release.comment|linebreaksbr }}</p>
+        <p>{{ release.comment|linebreaksbr|urlize }}</p>
         <br />
         <br />
         {% endif %}
