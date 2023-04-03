@@ -21,6 +21,7 @@
             {% else %}
                 <img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />
             {% endif %}
+            {% endif %}
             {% if release.toEuliskerArchivelink %}<br /><br /><br /><img src="https://archive.org/download/{{ release.toEuliskerArchivelink }}/__ia_thumb.jpg">{% endif %}
         </div>        
         {% if release.published_date %}
