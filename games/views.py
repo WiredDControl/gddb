@@ -94,7 +94,10 @@ def release_detail(request, pk):
     release = get_object_or_404(Release, pk=pk)
     firstgameid = Release.objects.get(id=pk).titles.all()[0].id
     try:
-        images = Image.objects.filter(rlstitle_id=pk)
+        diskimages = Image.objects.filter(rlstitle_id=pk,imgtype='oth')
+        coverimg = Image.objects.filter(rlstitle_id=pk,imgtype='cvr')
+        backimg = Image.objects.filter(rlstitle_id=pk,imgtype='bck')
+        mediaimg = Image.objects.filter(rlstitle_id=pk,imgtype='media')
     except:
         print("no images found")
         images = None    
@@ -108,7 +111,7 @@ def release_detail(request, pk):
     except:
         print("no disks found")
         extras = None
-    return render(request, 'releases/release_detail.html', {'release': release, 'images': images, 'disks': disks, 'extras': extras, 'firstgameid': firstgameid})
+    return render(request, 'releases/release_detail.html', {'release': release, 'images': images, 'coverimg': coverimg, 'backimg': backimg, 'mediaimg': mediaimg, 'disks': disks, 'extras': extras, 'firstgameid': firstgameid})
 
 def glp_new(request):
     if request.method == "POST":
