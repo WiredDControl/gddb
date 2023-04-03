@@ -119,10 +119,10 @@ class GLP(models.Model):
 class Release(models.Model):
     rlstitle = models.CharField("Release",max_length=250)
     coverfilename = models.CharField("Cover-Dateiname",max_length=250,blank=True,default="")
-    i3dbox = models.BooleanField("Addon?",default=False)
-    i3dboxupper = models.BooleanField("Addon?",default=False)
-    i3dboxlower = models.BooleanField("Addon?",default=False)
-    i3djewelcase = models.BooleanField("Addon?",default=False)
+    i3dbox = models.BooleanField("3D Box",default=False)
+    i3dboxupper = models.BooleanField("3D Box obere Hälfte",default=False)
+    i3dboxlower = models.BooleanField("3D Box untere Hälfte",default=False)
+    i3djewelcase = models.BooleanField("3D Jewelcase",default=False)
     titles = models.ManyToManyField(Game, related_name="gametitle")
     platformlnk = models.ForeignKey(Platform, on_delete=models.CASCADE, default="1")
     floppy35 = 'F3'
