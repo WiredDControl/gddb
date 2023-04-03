@@ -97,7 +97,7 @@ def release_detail(request, pk):
         images = Image.objects.filter(rlstitle_id=pk,imgtype='oth')
         coverimg = Image.objects.filter(rlstitle_id=pk,imgtype='cvr')
         backimg = Image.objects.filter(rlstitle_id=pk,imgtype='bck')
-        mediaimg = Image.objects.filter(rlstitle_id=pk,imgtype='media')
+        mediaimg = Image.objects.filter(rlstitle_id=pk,imgtype='med')
     except:
         print("no images found")
         images = None    
