@@ -94,7 +94,7 @@ def release_detail(request, pk):
     release = get_object_or_404(Release, pk=pk)
     firstgameid = Release.objects.get(id=pk).titles.all()[0].id
     try:
-        diskimages = Image.objects.filter(rlstitle_id=pk,imgtype='oth')
+        images = Image.objects.filter(rlstitle_id=pk,imgtype='oth')
         coverimg = Image.objects.filter(rlstitle_id=pk,imgtype='cvr')
         backimg = Image.objects.filter(rlstitle_id=pk,imgtype='bck')
         mediaimg = Image.objects.filter(rlstitle_id=pk,imgtype='media')

@@ -117,21 +117,27 @@
             <tr>
                 <td>
                     {% if coverimg %}
-                    <a href="https://archive.org/download/{{ release.archivelink }}/{{ coverimg[0].imgfilename }}"><img src="https://archive.org/download/{{ release.archivelink }}/{{ coverimg[0].imgfilename|preview }}" style="max-height: 350px;"></a>
+                    {% for cover in coverimg %}
+                    <a href="https://archive.org/download/{{ release.archivelink }}/{{ cover.imgfilename }}"><img src="https://archive.org/download/{{ release.archivelink }}/{{ cover.imgfilename|preview }}" style="max-height: 350px;"></a>
+                    {% endfor %}
                     {% else %}
                     <img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />
                     {% endif %}
                 </td>
                 <td>
                     {% if backimg %}
-                    <a href="https://archive.org/download/{{ release.archivelink }}/{{ backimg[0].imgfilename }}"><img src="https://archive.org/download/{{ release.archivelink }}/{{ backimg[0].imgfilename|preview }}" style="max-height: 350px;"></a>
+                    {% for back in backimg %}
+                    <a href="https://archive.org/download/{{ release.archivelink }}/{{ back.imgfilename }}"><img src="https://archive.org/download/{{ release.archivelink }}/{{ back.imgfilename|preview }}" style="max-height: 350px;"></a>
+                    {% endfor %}
                     {% else %}
                     <img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />
                     {% endif %}
                 </td>
                 <td>
                     {% if mediaimg %}
-                    <a href="https://archive.org/download/{{ release.archivelink }}/{{ mediaimg[0].imgfilename }}"><img src="https://archive.org/download/{{ release.archivelink }}/{{ mediaimg[0].imgfilename|preview }}" style="max-height: 350px;"></a>
+                    {% for media in mediaimg %}
+                    <a href="https://archive.org/download/{{ release.archivelink }}/{{ media.imgfilename }}"><img src="https://archive.org/download/{{ release.archivelink }}/{{ media.imgfilename|preview }}" style="max-height: 350px;"></a>
+                    {% endfor %}
                     {% else %}
                     <img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />
                     {% endif %}
