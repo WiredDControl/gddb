@@ -147,6 +147,10 @@
         <table class="images">
             <tr>
             {% for img in images %}
+            {% if forloop.counter0|divisibleby:4 %}
+            </tr>
+            <tr>
+            {% endif %}
                 <td style="vertical-align: top">{{ img.get_imgtype_display }}<br />
                     {% if img.imgdescr %}{{ img.imgdescr }}{% endif %}<br /><br />
                     <a href="https://archive.org/download/{{ release.archivelink }}/{{ img.imgfilename }}"><img src="https://archive.org/download/{{ release.archivelink }}/{{ img.imgfilename|preview }}" style="max-height: 350px;"></a><br>
