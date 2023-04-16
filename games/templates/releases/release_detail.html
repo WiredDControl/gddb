@@ -11,6 +11,7 @@
                 {% if release.i3dbox %}
                     <object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}_&ext=jpg&bg=ffffff" style="height:400px;width:100%;border:none;"></object><br />
                     {% if release.i3djewelcase %}<object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-jewelcase_&ext=jpg&bg=ffffff" style="height:400px;width:100%;border:none;"></object><br />{% endif %}
+                    ( use Mouse to manually rotate )<br />
                     ( 3D <a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}_&ext=jpg&bg=ffffff" target="_blank">Box</a>
                     {% if release.i3dboxupper %}| <a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-upper_&ext=jpg&bg=ffffff" target="_blank">Obere</a>{% endif %}
                     {% if release.i3dboxlower %}| <a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-lower_&ext=jpg&bg=ffffff" target="_blank">Untere</a>{% endif %}
@@ -85,7 +86,8 @@
                 <tr>
                     <td style="vertical-align: top">{{ disk.get_disktype_display }} #{{ disk.diskcount }} {% if disk.diskfilename %} - {% if user.is_authenticated %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download</a>{% else %}Download (nur registrierte User){% endif %} (rip: <span style="color:green;">{{ disk.source }}</span>, {% if disk.timberown %}<span style="color:green;">auch enthalten</span>{% else %}<span style="color:red;">fehlt aber</span>{% endif %} in Timber's Collection){% else %} (rip: <span style="color:red;">fehlt</span>, {% if disk.timberown %}<span style="color:green;">aber enthalten</span>{% else %}<span style="color:red;">fehlt auch</span>{% endif %} in Timber's Collection){% endif %}
                     {% if disk.diskdescr %}<br /><span style="color:red;">Info: {{ disk.diskdescr }}</span>{% endif %}
-                    {% if disk.diskcomment %}<br /><span style="color:red;">Info: {{ disk.diskcomment }}</span>{% endif %}<br />
+                    {% if disk.diskcomment %}<br /><span style="color:red;">Kommentar: {{ disk.diskcomment }}</span>{% endif %}<br />
+                    {% if disk.timbercomment %}<br /><span style="color:red;">Quali: {{ disk.get_timberquali_display }} - {{ disk.timbercomment }}</span>{% endif %}<br />
                     </td>
                 </tr>                        
             {% endfor %}
