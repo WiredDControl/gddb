@@ -86,7 +86,7 @@
                 <tr>
                     <td style="vertical-align: top">{{ disk.get_disktype_display }} #{{ disk.diskcount }} {% if disk.diskfilename %} - {% if user.is_authenticated %}<a href="https://timberserver.de/gddb/{{ release.archivelink }}/{{ disk.diskfilename }}">Download</a>{% else %}Download (nur registrierte User){% endif %} (rip: <span style="color:green;">{{ disk.source }}</span>, {% if disk.timberown %}<span style="color:green;">auch enthalten</span>{% else %}<span style="color:red;">fehlt aber</span>{% endif %} in Timber's Collection){% else %} (rip: <span style="color:red;">fehlt</span>, {% if disk.timberown %}<span style="color:green;">aber enthalten</span>{% else %}<span style="color:red;">fehlt auch</span>{% endif %} in Timber's Collection){% endif %}
                     {% if disk.diskdescr %}<br /><span style="color:red;">Info: {{ disk.diskdescr }}</span>{% endif %}
-                    {% if disk.diskcomment %}<br /><span style="color:red;">Kommentar: {{ disk.diskcomment }}</span>{% endif %}<br />
+                    {% if disk.diskcomment %}<br /><span style="color:red;">Kommentar: {{ disk.diskcomment }}</span>{% endif %}
                     {% if disk.timbercomment %}<br /><span style="color:red;">Quali: {{ disk.get_timberquali_display }} - {{ disk.timbercomment }}</span>{% endif %}<br />
                     </td>
                 </tr>                        
