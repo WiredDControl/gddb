@@ -9,9 +9,11 @@
 			<li class="nav-item">
 				<a class="nav-link" href="/">Neuste Release</a>
 			</li>
+			{% if user.is_authenticated %}
 			<li class="nav-item">
 				<a class="nav-link" href="/eulisker_list">Eulisker</a>
-			</li>			  
+			</li>
+			{% endif %}
 			<li class="nav-item">
 			  <a class="nav-link" href="/releasesearch">Suche</a>
 			</li>
