@@ -7,9 +7,8 @@
     <article class="game">
         <div class="coverimage">
             {% if release.coverfilename %}
-                {% if release.i3dbox or release.i3djewelcase %}
-                    {% if release.i3dbox %}
-                    <object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}_&ext=jpg&bg=ffffff" style="height:400px;width:100%;border:none;"></object><br />{% endif %}
+                {% if release.i3dbox %}
+                    <object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}_&ext=jpg&bg=ffffff" style="height:400px;width:100%;border:none;"></object><br />
                     {% if release.i3djewelcase %}<object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-jewelcase_&ext=jpg&bg=ffffff" style="height:400px;width:100%;border:none;"></object><br />{% endif %}
                     ( use Mouse to manually rotate and zoom )<br />
                     ( 3D <a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}_&ext=jpg&bg=ffffff" target="_blank">Box</a>
@@ -17,6 +16,13 @@
                     {% if release.i3dboxlower %}| <a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-lower_&ext=jpg&bg=ffffff" target="_blank">Untere</a>{% endif %}
                     {% if release.i3djewelcase %}| <a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-jewelcase_&ext=jpg&bg=ffffff" target="_blank">Jewelcase</a>{% endif %}
                     )
+                {% elif release.i3djewelcase %}
+                    <object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-jewelcase_&ext=jpg&bg=ffffff" style="height:400px;width:100%;border:none;"></object><br />
+                    ( use Mouse to manually rotate and zoom )<br />
+                    ( 3D <a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-jewelcase_&ext=jpg&bg=ffffff" target="_blank">Jewelcase</a>
+                    {% if release.i3dboxupper %}| <a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-upper_&ext=jpg&bg=ffffff" target="_blank">Obere</a>{% endif %}
+                    {% if release.i3dboxlower %}| <a href="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-lower_&ext=jpg&bg=ffffff" target="_blank">Untere</a>{% endif %}
+                    )                
                 {% else %}
                     <img src="https://archive.org/download/{{ release.archivelink }}/{{ release.coverfilename }}">
                 {% endif %}
