@@ -7,7 +7,7 @@
     <article class="game">
         <div class="coverimage">
             {% if release.coverfilename %}
-                {% if release.i3dbox %}
+                {% if release.i3dbox or release.i3djewelcase %}
                     <object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}_&ext=jpg&bg=ffffff" style="height:400px;width:100%;border:none;"></object><br />
                     {% if release.i3djewelcase %}<object data="https://timberserver.de/3dbox/bigbox3d.html?path=/3dbox/timg/&name={{ release.archivelink }}-jewelcase_&ext=jpg&bg=ffffff" style="height:400px;width:100%;border:none;"></object><br />{% endif %}
                     ( use Mouse to manually rotate and zoom )<br />
