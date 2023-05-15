@@ -9,7 +9,7 @@
         </tr>        
         {% for entry in eulisker_list %}
             <td style="width: 600px;vertical-align: top;padding-left: 10px;"><a href="{% url 'release_detail' pk=entry.pk %}">{{ entry.rlstitle }} ({{ entry.year }}, {{ entry.platformlnk.platformname }} - {{ entry.get_media_display }})</a></td>
-            <td style="padding-left: 6px; vertical-align: top;padding-left: 10px;">{{ entry.toEuliskerComment }}</td>
+            <td style="padding-left: 6px; vertical-align: top;padding-left: 10px;">{{ entry.toEuliskerComment|linebreaksbr }}</td>
             </tr>
         {% endfor %}
     </table>
