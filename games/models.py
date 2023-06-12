@@ -130,12 +130,14 @@ class Release(models.Model):
     cdrom = 'CD'
     dvdrom = 'DD'
     download = 'DL'
+    tape = 'TP'
     media_CHOICES = [
         (floppy35, 'Floppy 3,5"'),
         (floppy52, 'Floppy 5,25"'),
         (cdrom, 'CD-ROM'),
         (dvdrom, 'DVD-ROM'),
         (download, 'Download'),
+        (tape, 'Tape'),
     ]
     media = models.CharField(
         max_length=2,
