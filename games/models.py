@@ -265,6 +265,7 @@ class Disk(models.Model):
     cdrom = 'CDR'
     dvdrom = 'DVD'
     download = 'DDL'
+    tape = 'TAPE'
     disktype_CHOICES = [
         (floppy35, 'Floppy 3,5"'),
         (floppy35k, 'Floppy 3,5" (Kryoflux)'),
@@ -273,6 +274,7 @@ class Disk(models.Model):
         (cdrom, 'CD-ROM'),
         (dvdrom, 'DVD-ROM'),
         (download, 'Download'),
+        (tape, 'Tape'),
     ]
     disktype = models.CharField(
         "Medientyp:",
