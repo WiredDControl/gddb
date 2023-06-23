@@ -118,6 +118,19 @@ class GLP(models.Model):
 
 class Release(models.Model):
     rlstitle = models.CharField("Release",max_length=250)
+    german = 'DACH'
+    engus = 'US'
+    enguk = 'UK'
+    rlsregion_CHOICES = [
+        (german, 'Deutschland/DACH'),
+        (engus, 'USA'),
+        (enguk, 'Great Britain/UK'),
+    ]
+    rlsregion = models.CharField(
+        max_length=4,
+        choices=rlsregion_CHOICES,
+        default=german,
+    )
     coverfilename = models.CharField("Cover-Dateiname",max_length=250,blank=True,default="")
     i3dbox = models.BooleanField("3D Box",default=False)
     i3dboxupper = models.BooleanField("3D Box obere Hälfte",default=False)

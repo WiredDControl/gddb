@@ -47,6 +47,8 @@
         {% else %}
         <h1><a href="{% url 'game_detail' pk=firstgameid %}">{{ release.rlstitle }}</a><br />({{ release.year }} - {{ release.get_media_display }})</h1>
         {% endif %}
+        <h2>Region: {{ release.get_rlsregion_display }}</h2>
+        <br />
             {% if release.ogdblink %}<h5><a href="{{ release.ogdblink }}" target="blank">Release on OGDB</a></h5>{% endif %}
             {% if release.archivelink %}<h5><a href="https://archive.org/details/{{ release.archivelink }}" target="blank">Eintrag auf archive.org (Timber)</a></h5>{% endif %}
             {% if release.toEuliskerArchivelink %}<h5><a href="https://archive.org/details/{{ release.toEuliskerArchivelink }}" target="blank">Eintrag auf archive.org (Eulisker)</a></h5>{% endif %}        
