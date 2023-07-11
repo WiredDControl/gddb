@@ -58,6 +58,8 @@
         <h5>Barcode: {{ release.barcode }}</h5>
         <h5>USK: {{ release.usk }}</h5>
         {% if user.is_authenticated %}<h5>Ankaufspreis: {{ release.timberprice }} ({{ release.timberbuydate }})</h5>{% endif %}
+        {% if user.is_authenticated %}<h5>Aktueller Wert: {{ release.timberworth }}</h5>{% endif %}
+        {% if user.is_authenticated %}<h5>Verkaufspreis: {{ release.timbersold }} ({{ release.timbersolddate }})</h5>{% endif %}
         {% if user.is_authenticated %}<h5>Kaufs/Verkaufsinfo: <br />{{ release.timberbuycomment }} </h5>{% endif %}
         <br />
         <br />
