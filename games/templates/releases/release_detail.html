@@ -57,10 +57,10 @@
         <h5>Platform: {{ release.platformlnk.platformname }}</h5>
         <h5>Barcode: {{ release.barcode }}</h5>
         <h5>USK: {{ release.usk }}</h5>
-        {% if user.is_authenticated %}<h5>Ankaufspreis: {{ release.timberprice }} ({{ release.timberbuydate }})</h5>{% endif %}
-        {% if user.is_authenticated %}<h5>Aktueller Wert: {{ release.timberworth }}</h5>{% endif %}
-        {% if user.is_authenticated %}<h5>Verkaufspreis: {{ release.timbersold }} ({{ release.timbersolddate }})</h5>{% endif %}
-        {% if user.is_authenticated %}<h5>Kaufs/Verkaufsinfo: <br />{{ release.timberbuycomment|linebreaksbr }} </h5>{% endif %}
+        {% if user.is_authenticated %}<span style="color:blue;"><h5>Ankaufspreis: {{ release.timberprice }} ({{ release.timberbuydate }})</h5></span>{% endif %}
+        {% if user.is_authenticated %}<span style="color:blue;"><h5>Aktueller Wert: {{ release.timberworth }}</h5></span>{% endif %}
+        {% if user.is_authenticated %}<span style="color:blue;"><h5>Verkaufspreis: {{ release.timbersold }} ({{ release.timbersolddate }})</h5></span>{% endif %}
+        {% if user.is_authenticated %}<span style="color:blue;"><h5>Kaufs/Verkaufsinfo: <br />{{ release.timberbuycomment|linebreaksbr }} </h5></span>{% endif %}
         <br />
         <br />
         {% if release.titles.all|length > 1 %}
@@ -92,8 +92,13 @@
         <br />
         <br />
         {% endif %}
-        {% if release.toEulisker %}
-        <p><span style="color:red;">Ist bei / muss zu Eulisker:<br/>{{ release.toEuliskerComment|linebreaksbr }}</span></p>
+        {% if user.is_authenticated %}
+        <h4>Eulisker:</h4>
+        {% if release.toEulisker %}<p><span style="color:red;">Ist bei / muss zu Eulisker</span></p>{% endif %}
+        <p><span style="color:blue;">
+        Historie:<br />
+        {{ release.toEuliskerComment|linebreaksbr }}
+        </span></p>
         <br />
         <br />        
         {% endif %}
