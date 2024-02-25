@@ -83,6 +83,9 @@
         <p>{{ release.comment|linebreaksbr|urlize }}</p>
         <br />
         <br />
+        {% else %}
+        <br />
+        <br />        
         {% endif %}
         {% if release.timbercomment %}
         <p><span style="color:red;">{{ release.timbercomment|linebreaksbr }}</span></p>
