@@ -136,6 +136,9 @@ class Release(models.Model):
     i3dboxupper = models.BooleanField("3D Box obere Hälfte",default=False)
     i3dboxlower = models.BooleanField("3D Box untere Hälfte",default=False)
     i3djewelcase = models.BooleanField("3D Jewelcase",default=False)
+    boxheight = models.CharField("Box - Länge",max_length=100,default="0")
+    boxwidth = models.CharField("Box - Breite",max_length=100,default="0")
+    boxdepth = models.CharField("Box - Tiefe",max_length=100,default="0")
     titles = models.ManyToManyField(Game, related_name="gametitle")
     platformlnk = models.ForeignKey(Platform, on_delete=models.CASCADE, default="1")
     floppy35 = 'F3'

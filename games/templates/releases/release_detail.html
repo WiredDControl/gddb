@@ -34,6 +34,10 @@
                     <img src="{% static 'images/default-cover.jpg' %}" alt="Cover fehlt" />
                 {% endif %}
             {% endif %}
+            <br />
+            Box - Länge: {{ release.boxheight }}<br/>
+            Box - Breite: {{ release.boxwidth }}<br/>
+            Box - Tiefe: {{ release.boxdepth }}<br/>
             {% if release.toEuliskerArchivelink %}<br /><br /><br /><img src="https://archive.org/download/{{ release.toEuliskerArchivelink }}/__ia_thumb.jpg">{% endif %}
         </div>        
         {% if release.published_date %}
