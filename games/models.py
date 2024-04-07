@@ -200,6 +200,7 @@ class Release(models.Model):
     toEulisker = models.BooleanField("Eulisker?",default=False)
     toEuliskerArchivelink = models.CharField("Eulisker-Eintrag auf archive.org",max_length=300,blank=True,default="")
     toEuliskerComment = models.TextField("Hinweis Eulisker",blank=True)
+    scancomplete = models.BooleanField("Scan komplett?",default=False)
 
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)

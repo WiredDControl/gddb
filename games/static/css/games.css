@@ -72,8 +72,13 @@ h4 {
     background-color: #C25100;
 }
 
-#included {
+#scancomplete {
     fill: #00FF00;
+    width: 16px;
+    height: 16px;
+}
+#included {
+    fill: #FF9900;
     width: 16px;
     height: 16px;
 }
