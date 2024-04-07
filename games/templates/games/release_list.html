@@ -36,7 +36,7 @@
                 <tr style="background-color: #91fd91;">
                 {% else %}
                 {% if release.timberown %}
-                <tr style="background-color: #ff9900;">
+                <tr style="background-color: #ffd000;">
                 {% else %}
                 <tr style="background-color: #ffffff;">
                 {% endif %}
@@ -49,7 +49,7 @@
                         <img id="scancomplete" src="{% static '/icons/check-circle-fill-green.svg' %}" alt="scanned" />
                         {% else %}
                         {% if release.timberown %}
-                        <img id="included" src="{% static '/icons/check-circle-fill-yellow.svg' %}"  alt="included" />
+                        <img id="included" src="{% static '/icons/check-circle-fill-green.svg' %}"  alt="included" />
                         {% else %}
                         <img id="notincluded" src="{% static '/icons/x-circle-fill.svg' %}"  alt="not included" />
                         {% endif %}
