@@ -46,7 +46,7 @@
                     <td style="padding-left: 6px; vertical-align: top;padding-left: 10px;">
                         <img id="included" src="{% get_static_prefix %}icons/{{ release.rlsregion }}.png" alt="region" />
                         {% if release.scancomplete %}
-                        <img id="scannedcomplete" src="{% static '/icons/check-circle-fill-green.svg' %}" alt="scanned" />
+                        <img id="scancomplete" src="{% static '/icons/check-circle-fill-green.svg' %}" alt="scanned" />
                         {% else %}
                         {% if release.timberown %}
                         <img id="included" src="{% static '/icons/check-circle-fill-yellow.svg' %}"  alt="included" />
