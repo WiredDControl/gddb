@@ -29,7 +29,7 @@
             <tr>
                 <th>Cover:</th>
                 <th style="padding-left: 10px;">Name:</th>            
-                <th style="padding-left: 10px;">in Timber's collection:</th>
+                <th style="padding-left: 10px;">Status:</th>
             </tr>        
             {% for release in release_list %}
                 {% if release.scancomplete %}
@@ -48,11 +48,12 @@
                         {% if release.scancomplete %}
                         <img id="scancomplete" src="{% static '/icons/check-circle-fill-green.svg' %}" alt="scanned" />
                         {% else %}
+                        <img id="notincluded" src="{% static '/icons/x-circle-fill.svg' %}"  alt="not included" />
+                        {% endif %}
                         {% if release.timberown %}
                         <img id="included" src="{% static '/icons/check-circle-fill-yellow.svg' %}"  alt="included" />
                         {% else %}
                         <img id="notincluded" src="{% static '/icons/x-circle-fill.svg' %}"  alt="not included" />
-                        {% endif %}
                         {% endif %}
                         {% if release.i3dbox %}
                         <img id="included" src="{% static '/icons/3d-icon.png' %}" alt="3D Box scan" />
