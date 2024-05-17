@@ -20,6 +20,9 @@ script_*
 # Media folder with images
 media/
 
+# backups
+gddb_backup_*
+
 # macOS
 ._*
 .DS_Store
