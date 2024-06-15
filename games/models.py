@@ -169,6 +169,7 @@ class Release(models.Model):
     addon = models.BooleanField("Addon?",default=False)
     barcode = models.CharField("Barcode",max_length=250)
     usk = models.CharField("USK-Freigabe",max_length=100)
+    launchboxID = models.CharField("LaunchBox-ID",max_length=100,default="")
     ogdblink = models.CharField("Link zu OGDB",max_length=300,blank=True,default="")
     archivelink = models.CharField("Eintrag auf archive.org",max_length=300,blank=True,default="")
     rawfile = models.CharField("Raw-Files Dateiname",max_length=250,blank=True,default="")
